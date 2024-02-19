@@ -1,0 +1,76 @@
+version: "3"
+services:
+  database-jardindOscar:
+    container_name: database-jardindOscar
+    image: mariadb:latest
+    ports:
+      - 65051:3306
+    volumes:
+      - ./backend/database:/var/lib/mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        MYSQL_DATABASE: ${MYSQL_DATABASE}
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+  cache-jardindOscar:
+    container_name: cache-jardindOscar
+    image: redis:latest
+
+  directus-jardindOscar:
+    container_name: directus-jardindOscar
+    image: directus/directus:latest
+    ports:
+      - 8056:8055
+    volumes:
+      - ./backend/directus/uploads:/directus/backend/uploads
+      - ./backend/directus/database:/directus/database
+      - ./backend/directus/extensions:/directus/extensions
+    depends_on:
+      - cache-jardindOscar
+      - database-jardindOscar
+    restart: unless-stopped
+    environment:
+      KEY: ${KEY}
+      SECRET: ${SECRET}
+      PUBLIC_URL: ${PUBLIC_URL}
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: "*"
+
+      # DB CONFIGURATION
+      DB_CLIENT: ${DB_CLIENT}
+      DB_HOST: database-jardindOscar
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${MYSQL_DATABASE}
+      DB_USER: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+
+      REDIS_HOST: cache-jardindOscar
+      REDIS_PORT: 6379
+
+      CACHE_STORE: "redis"
+      RATE_LIMITER_STORE: "redis"
+      SYNCHRONIZATION_STORE: "redis"
+      MESSENGER_STORE: "redis"
+
+      # DEFAULT ADMIN USER
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+
+      #WEBSOCKETS
+      WEBSOCKETS_ENABLED: "true"
+      WEBSOCKETS_REST_ENABLED: "true"
+      WEBSOCKETS_REST_AUTH: "handshake"
+      WEBSOCKETS_REST_AUTH_TIMEOUT: 15
+
+      #STORAGE
+      STORAGE_LOCATIONS: "local"
+      STORAGE_LOCAL_DRIVER: "local"
+      STORAGE_LOCAL_ROOT: "./backend/uploads"
+
+#  nextjs-front-porfolio_data:
+#    depends_on:
+#      - directus-jardindOscar
+#    build: next-client
+#    ports:
+#      - 3001:3000
