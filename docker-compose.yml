@@ -68,9 +68,9 @@ services:
       STORAGE_LOCAL_DRIVER: "local"
       STORAGE_LOCAL_ROOT: "./backend/uploads"
 
-#  nextjs-front-porfolio_data:
-#    depends_on:
-#      - directus-jardindOscar
-#    build: next-client
-#    ports:
-#      - 3001:3000
+  nextjs-front-porfolio_data:
+    depends_on:
+      - directus-jardindOscar
+    build: frontend
+    ports:
+      - 3001:3000
