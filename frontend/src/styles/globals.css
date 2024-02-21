@@ -16,11 +16,12 @@ html, body{
   scroll-behavior: smooth;
   text-align: justify;
   text-justify: inter-word;
-  font-family: 'Poppins', sans-serif;
 }
 
 body{
   padding: 0 2rem;
+  background: var(--background);
+  color: var(--fontColor);
 }
 
 li{

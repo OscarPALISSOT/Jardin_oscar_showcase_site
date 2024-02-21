@@ -14,7 +14,10 @@ const config: Config = {
             'fontColor': '#19170e',
             'fontSecondary': '#8e7657',
             'fontColorLight': '#f4f4f4',
-        }
+        },
+        fontFamily: {
+            'serif': ['Noto Serif', 'serif'],
+        },
     },
     plugins: [],
 };

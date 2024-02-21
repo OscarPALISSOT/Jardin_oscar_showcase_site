@@ -7,7 +7,8 @@ const Home = () => {
 
     return (
         <>
-            <h1>home</h1>
+            <h1 className={'font-serif'}>home</h1>
+            <p>lorem ipsum</p>
         </>
     )
 }
