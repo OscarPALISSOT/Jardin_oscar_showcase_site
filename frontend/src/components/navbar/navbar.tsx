@@ -9,7 +9,7 @@ const Navbar = ({links, logo}: NavbarProps) => {
 
     return (
         <>
-            <div className={'text-2xl font-serif bg-primary -mx-24 px-24 h-20 flex flex-row justify-between items-center mb-6'}>
+            <div className={'text-2xl font-bold font-serif -mx-24 px-24 h-20 flex flex-row justify-between items-center mb-6'}>
                 <h1>navbar</h1>
                 <div>
                     <ul className={'flex flex-row'}>

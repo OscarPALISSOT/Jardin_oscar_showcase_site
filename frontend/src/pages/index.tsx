@@ -8,13 +8,15 @@ const Home = () => {
 
     return (
         <>
-            <Navbar
-                links={['home', 'about', 'contact', 'services']}
-                logo={'/logo.png'}
-            />
+            <div className={'bg-background px-8 md:px-24'}>
+                <Navbar
+                    links={['Home', 'About', 'Contact', 'Services']}
+                    logo={'/logo.png'}
+                />
 
-            <h1 className={'font-serif'}>home</h1>
-            <p>lorem ipsum</p>
+                <h1 className={'font-serif'}>home</h1>
+                <p>lorem ipsum</p>
+            </div>
         </>
     )
 }
