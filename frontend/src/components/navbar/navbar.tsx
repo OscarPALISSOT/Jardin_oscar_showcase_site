@@ -15,7 +15,7 @@ const Navbar = ({links, logo}: NavbarProps) => {
             <div
                 className={`text-2xl transition duration-300 font-bold bg-background font-serif sticky top-0 -mx-24 px-24 mb-6 flex flex-col justify-between ${scrollY > 0 && 'shadow-[0_6px_12px_0_rgba(0,0,0,0.12)] '}`}>
                 <div className={'flex flex-row justify-between items-center h-20'}>
-                    <h1>navbar</h1>
+                    <h1>Le logo</h1>
                     <div>
                         <ul className={'flex flex-row'}>
                             {links.map((link, index) => {
