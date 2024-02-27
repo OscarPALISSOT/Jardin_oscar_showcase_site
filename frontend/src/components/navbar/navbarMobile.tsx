@@ -37,7 +37,7 @@ const NavbarMobile = ({links, logo}: NavbarProps) => {
                         className={'cursor-pointer py-2 overflow-hidden'}
                         onClick={() => setIsMenuOpen(!isMenuOpen)}>
                         <div
-                            className={`h-0.5 w-8 bg-fontColor duration-300 ease-out transition-all before:content-[""] before:h-0.5 before:w-8 before:absolute before:bg-fontColor after:content-[""] after:h-0.5 after:w-8 after:absolute after:bg-fontColor before:-translate-y-2 after:translate-y-2 before:duration-300 before:transition-all before:ease-out after:duration-300 after:transition-all after:ease-out ${isMenuOpen && '-translate-x-8 bg-transparent before:translate-x-8 after:translate-x-8 before:rotate-45 before:translate-y-0 after:rotate-[-45deg] after:translate-y-0'}`}
+                            className={`h-0.5 w-8 bg-fontColor duration-300 ease-out transition-all before:content-[""] before:h-0.5 before:w-8 before:absolute before:bg-fontColor after:content-[""] after:h-0.5 after:w-8 after:absolute after:bg-fontColor before:-translate-y-2 after:translate-y-2 before:duration-300 before:transition-all before:ease-out after:duration-300 after:transition-all after:ease-out ${isMenuOpen && '-translate-x-8 bg-transparent before:translate-x-8 after:translate-x-8 before:rotate-45 before:translate-y-0 after:translate-y-[0] after:-rotate-45'}`}
                         />
                     </div>
 
