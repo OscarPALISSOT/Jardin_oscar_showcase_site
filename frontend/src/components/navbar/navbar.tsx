@@ -1,6 +1,7 @@
 import React from "react";
 import useScroll from "@/hooks/useScrool";
 import Link from "next/link";
+import Image from "next/image";
 
 interface NavbarProps {
     links: string[];
@@ -16,7 +17,11 @@ const Navbar = ({links, logo}: NavbarProps) => {
             <div
                 className={`text-2xl transition duration-300 font-bold bg-background font-serif sticky top-0 -mx-24 px-24 mb-6 flex flex-col justify-between ${scrollY > 0 && 'shadow-[0_6px_12px_0_rgba(0,0,0,0.12)] '}`}>
                 <div className={'flex flex-row justify-between items-center h-20'}>
-                    <h1>Le logo</h1>
+                    <Link href="/">
+                        <Image className={'h-12 w-auto cursor-pointer hover:scale-105 duration-300 ease-out transition-all'}
+                               src={process.env.NEXT_PUBLIC_ASSETS_URL + logo + '?key=logo'} alt="logo" width={128}
+                               height={128}/>
+                    </Link>
                     <div>
                         <ul className={'flex flex-row'}>
                             {links.map((link, index) => {

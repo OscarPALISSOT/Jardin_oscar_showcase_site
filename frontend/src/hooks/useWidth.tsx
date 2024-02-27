@@ -1,13 +1,11 @@
 import {useEffect, useState} from "react";
 
-const useDeviceSize = () => {
+const useWidth = () => {
 
     const [width, setWidth] = useState(0)
-    const [height, setHeight] = useState(0)
 
     const handleWindowResize = () => {
         setWidth(window.innerWidth);
-        setHeight(window.innerHeight);
     }
 
     useEffect(() => {
@@ -17,8 +15,8 @@ const useDeviceSize = () => {
         return () => window.removeEventListener('resize', handleWindowResize);
     }, []);
 
-    return [width, height]
+    return width
 
 }
 
-export default useDeviceSize
+export default useWidth
