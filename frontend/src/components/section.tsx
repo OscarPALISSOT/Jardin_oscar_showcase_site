@@ -8,7 +8,7 @@ interface SectionProps {
 
 export default function Section({children, id}: SectionProps) {
     return (
-        <section className={'w-full md:flex md:flex-col md:justify-center md:h-[calc(100vh_-_5rem_-_2px)]'} id={id}>
+        <section className={'w-full md:flex md:flex-col md:justify-center h-fit'} id={id}>
             {children}
         </section>
     )

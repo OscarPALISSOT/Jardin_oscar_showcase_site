@@ -47,7 +47,7 @@ const NavbarMobile = ({links, logo}: NavbarProps) => {
 
             </div>
             <div
-                className={`flex flex-row justify-center top-20 left-0 fixed h-screen w-screen bg-background scale-y-0 duration-500 ease-in-out transition-all origin-top p-6 ${isMenuOpen && 'scale-y-100 duration-500'}`}>
+                className={`flex flex-row justify-center top-20 left-0 fixed h-screen w-screen bg-background scale-y-0 duration-500 ease-in-out transition-all origin-top p-6 z-50 ${isMenuOpen && 'scale-y-100 duration-500'}`}>
                 <ul className={'flex flex-col'}>
                     {links.map((link, index) => {
                         return (

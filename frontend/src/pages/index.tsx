@@ -35,7 +35,7 @@ const Home = ({logo, links, heroBlock}: HomeProps) => {
 
                 {heroBlock &&
                     <Section id={heroBlock.link}>
-                        test
+                        <Hero heroBlock={heroBlock}/>
                     </Section>
                 }
 
