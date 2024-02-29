@@ -14,8 +14,6 @@
 html, body{
   overflow-x: clip;
   scroll-behavior: smooth;
-  text-align: justify;
-  text-justify: inter-word;
 }
 
 body{

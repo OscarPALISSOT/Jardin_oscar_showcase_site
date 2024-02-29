@@ -18,6 +18,8 @@ const Home = ({logo, links, heroBlock}: HomeProps) => {
 
     const width = useDeviceSize();
 
+    console.log(heroBlock)
+
     return (
         <>
             <div className={'bg-background px-8 md:px-24'}>

@@ -2,6 +2,9 @@ interface HeroType {
     logo: string;
     link: string;
     title: string;
+    subtitle: string;
+    hero_image: string;
+    catchPhrase: string;
     text: string;
-    background: string;
+    thumbnail: string;
 }

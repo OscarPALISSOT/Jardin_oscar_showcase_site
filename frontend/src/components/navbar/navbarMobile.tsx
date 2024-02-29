@@ -51,7 +51,11 @@ const NavbarMobile = ({links, logo}: NavbarProps) => {
                 <ul className={'flex flex-col'}>
                     {links.map((link, index) => {
                         return (
-                            <li key={index} className={'mx-4 cursor-pointer relative mb-6'}>
+                            <li
+                                key={index}
+                                className={'mx-4 cursor-pointer relative mb-6'}
+                                onClick={() => setIsMenuOpen(false)}
+                            >
                                 <Link href={`/#${link}`}
                                       className={'before:content-[""] before:absolute before:h-0.5 before:bottom-0.5 before:bg-primary before:transition-transform before:w-full before:left-0 before:ease-out before:duration-300 before:origin-bottom-right before:scale-x-0 hover:before:scale-x-100 hover:before:origin-bottom-left text-4xl font-serif font-bold'}>
                                     {link}
