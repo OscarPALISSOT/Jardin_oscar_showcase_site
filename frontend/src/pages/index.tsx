@@ -6,6 +6,7 @@ import NavbarMobile from "@/components/navbar/navbarMobile";
 import Hero from "@/components/hero";
 import hero from "@/components/hero";
 import Section from "@/components/section";
+import ServiceBlock from "@/components/serviceBlock/serviceBlock";
 
 const client = createDirectus(process.env.NEXT_PUBLIC_DIRECTUS_URL!).with(rest());
 
@@ -13,12 +14,11 @@ interface HomeProps {
     links: string[];
     logo: string;
     heroBlock: HeroType;
+    serviceBlock: Service_blockType;
 }
-const Home = ({logo, links, heroBlock}: HomeProps) => {
+const Home = ({logo, links, heroBlock, serviceBlock}: HomeProps) => {
 
     const width = useDeviceSize();
-
-    console.log(heroBlock)
 
     return (
         <>
@@ -41,6 +41,12 @@ const Home = ({logo, links, heroBlock}: HomeProps) => {
                     </Section>
                 }
 
+                {serviceBlock &&
+                    <Section id={serviceBlock.link}>
+                        <ServiceBlock serviceBlock={serviceBlock}/>
+                    </Section>
+                }
+
             </div>
         </>
     )
@@ -55,10 +61,19 @@ export async function getServerSideProps() {
         })
     ) as unknown as HeroType;
 
+    const service_block = await client.request(
+        readItems('service_block', {
+            fields: ['*', {
+                services: ['*', {}]
+            }],
+        })
+    ) as unknown as Service_blockType;
+
     return {
         props: {
             heroBlock: hero,
-            links: [hero.link],
+            serviceBlock: service_block,
+            links: [hero.link, service_block.link],
             logo: hero.logo,
         },
     };

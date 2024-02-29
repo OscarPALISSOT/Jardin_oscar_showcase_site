@@ -11,6 +11,8 @@ export default function App({Component, pageProps}: AppProps) {
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <title>Le jardin d&apos;Oscar | Terrasses bois et artisan dans le Doubs</title>
+                <meta name="theme-color" content="#dc891c" media="(prefers-color-scheme: light)"/>
+                <meta name="theme-color" content="#dc891c" media="(prefers-color-scheme: dark)"/>
             </Head>
 
             <Component {...pageProps} />
