@@ -16,7 +16,7 @@ const Navbar = ({links, logo}: NavbarProps) => {
     return (
         <>
             <div
-                className={`text-2xl transition duration-300 font-bold bg-background font-serif sticky top-0 -mx-24 px-24 flex flex-col justify-between ${scrollY > 0 && 'shadow-[0_6px_12px_0_rgba(0,0,0,0.12)] '}`}>
+                className={`text-2xl transition duration-300 font-bold bg-background font-serif sticky top-0 -mx-24 px-24 flex flex-col justify-between z-50 ${scrollY > 0 && 'shadow-[0_6px_12px_0_rgba(0,0,0,0.12)] '}`}>
                 <div className={'flex flex-row justify-between items-center h-20'}>
                     <Link href="/">
                         <Image className={'h-12 w-auto cursor-pointer hover:scale-105 duration-300 ease-out transition-all'}

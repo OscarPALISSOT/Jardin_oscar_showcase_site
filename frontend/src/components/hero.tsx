@@ -14,7 +14,7 @@ const Hero = ({heroBlock}: SectionProps) => {
                 <div className={'sm:w-1/2'}>
                     <Image src={process.env.NEXT_PUBLIC_ASSETS_URL + heroBlock.hero_image + '?key=squared-thumb'}
                            width={1080} height={1080} alt={heroBlock.title}
-                           className={'rounded-xl shadow-md w-full h-auto hover:scale-[102%] duration-300 ease-out transition-all'}/>
+                           className={'rounded-xl shadow-md w-full h-auto hover:scale-[102%] duration-300 ease-out transition-transform z-0'}/>
                 </div>
             </div>
         </>
