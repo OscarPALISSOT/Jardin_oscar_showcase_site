@@ -2,6 +2,7 @@ import React from "react";
 import useScroll from "@/hooks/useScrool";
 import Link from "next/link";
 import Image from "next/image";
+import navTo from "@/modules/navTo";
 
 interface NavbarProps {
     links: string[];
@@ -28,6 +29,9 @@ const Navbar = ({links, logo}: NavbarProps) => {
                                 return (
                                     <li key={index} className={'mx-4 cursor-pointer relative'}>
                                         <Link href={`/#${link}`}
+                                              onClick={(e) => {
+                                                  navTo(e, link)
+                                              }}
                                               className={'before:content-[""] before:absolute before:h-0.5 before:bottom-0.5 before:bg-primary before:transition-transform before:w-full before:left-0 before:ease-out before:duration-300 before:origin-bottom-right before:scale-x-0 hover:before:scale-x-100 hover:before:origin-bottom-left'}>
                                             {link}
                                         </Link>
