@@ -30,7 +30,7 @@ const ServiceBlock = ({serviceBlock}: ServiceBlockProps) => {
                 </div>
             </div>
 
-            <div className={'mt-8 mb-6 w-full flex flex-col sm:flex-row gap-4'}>
+            <div className={'mt-8 mb-12 w-full flex flex-col sm:flex-row gap-6'}>
                 <h1 className={'text-2xl lg:text-3xl font-serif font-extrabold text-fontColor mb-2 sm:w-1/2'}>{serviceBlock.catchPhrase}</h1>
                 <p className={'text-lg lg:text-xl text-fontColor sm:w-1/2'}>{serviceBlock.text}</p>
             </div>
