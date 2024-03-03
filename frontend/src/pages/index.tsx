@@ -4,9 +4,9 @@ import Navbar from "@/components/navbar/navbar";
 import useDeviceSize from "@/hooks/useWidth";
 import NavbarMobile from "@/components/navbar/navbarMobile";
 import Hero from "@/components/hero";
-import hero from "@/components/hero";
 import Section from "@/components/section";
 import ServiceBlock from "@/components/serviceBlock/serviceBlock";
+import Renovation from "@/components/renovation";
 
 const client = createDirectus(process.env.NEXT_PUBLIC_DIRECTUS_URL!).with(rest());
 
@@ -15,8 +15,9 @@ interface HomeProps {
     logo: string;
     heroBlock: HeroType;
     serviceBlock: Service_blockType;
+    renovationBlock: RenovationType;
 }
-const Home = ({logo, links, heroBlock, serviceBlock}: HomeProps) => {
+const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock}: HomeProps) => {
 
     const width = useDeviceSize();
 
@@ -47,6 +48,12 @@ const Home = ({logo, links, heroBlock, serviceBlock}: HomeProps) => {
                     </Section>
                 }
 
+                {renovationBlock &&
+                    <Section id={renovationBlock.link}>
+                        <Renovation renovationBlock={renovationBlock}/>
+                    </Section>
+                }
+
             </div>
         </>
     )
@@ -69,11 +76,18 @@ export async function getServerSideProps() {
         })
     ) as unknown as Service_blockType;
 
+    const renovation = await client.request(
+        readItems('renovation', {
+            fields: ['*', {}],
+        })
+    ) as unknown as RenovationType;
+
     return {
         props: {
             heroBlock: hero,
             serviceBlock: service_block,
-            links: [hero.link, service_block.link],
+            renovationBlock: renovation,
+            links: [hero.link, service_block.link, renovation.link],
             logo: hero.logo,
         },
     };
