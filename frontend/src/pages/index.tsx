@@ -7,6 +7,7 @@ import Hero from "@/components/hero";
 import Section from "@/components/section";
 import ServiceBlock from "@/components/serviceBlock/serviceBlock";
 import Renovation from "@/components/renovation";
+import Gallery from "@/components/gallery/gallery";
 
 const client = createDirectus(process.env.NEXT_PUBLIC_DIRECTUS_URL!).with(rest());
 
@@ -16,8 +17,9 @@ interface HomeProps {
     heroBlock: HeroType;
     serviceBlock: Service_blockType;
     renovationBlock: RenovationType;
+    galleryBlock: GalleryType;
 }
-const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock}: HomeProps) => {
+const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlock}: HomeProps) => {
 
     const width = useDeviceSize();
 
@@ -54,6 +56,12 @@ const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock}: HomeProps
                     </Section>
                 }
 
+                {galleryBlock &&
+                    <Section id={galleryBlock.link}>
+                        <Gallery galleryBlock={galleryBlock}/>
+                    </Section>
+                }
+
             </div>
         </>
     )
@@ -82,12 +90,21 @@ export async function getServerSideProps() {
         })
     ) as unknown as RenovationType;
 
+    const gallery = await client.request(
+        readItems('gallery', {
+            fields: ['*', {
+                images: ['*', {}]
+            }],
+        })
+    ) as unknown as GalleryType;
+
     return {
         props: {
             heroBlock: hero,
             serviceBlock: service_block,
             renovationBlock: renovation,
-            links: [hero.link, service_block.link, renovation.link],
+            galleryBlock: gallery,
+            links: [hero.link, service_block.link, renovation.link, gallery.link],
             logo: hero.logo,
         },
     };

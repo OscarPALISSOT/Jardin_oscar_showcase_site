@@ -36,7 +36,7 @@ const ServiceBlock = ({serviceBlock}: ServiceBlockProps) => {
             </div>
             <Image src={process.env.NEXT_PUBLIC_ASSETS_URL + serviceBlock.thumbnail + '?key=1080p'}
                    width={1920} height={1080} alt={'thumbnail'}
-                   className={'rounded-xl shadow-md w-full h-auto max-h-[50vh] object-cover mb-6'}/>
+                   className={'rounded-xl shadow-md w-full h-auto max-h-[50vh] object-cover mb-6 hover:scale-[102%] duration-300 ease-out transition-transform z-0'}/>
         </div>
     )
 }
