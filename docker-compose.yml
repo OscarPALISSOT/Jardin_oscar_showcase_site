@@ -1,7 +1,7 @@
 version: "3"
 services:
-  database-jardindOscar:
-    container_name: database-jardindOscar
+  database-jardindoscar:
+    container_name: database-jardindoscar
     image: mariadb:latest
     ports:
       - 65051:3306
@@ -13,12 +13,12 @@ services:
         MYSQL_USER: ${MYSQL_USER}
         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
-  cache-jardindOscar:
-    container_name: cache-jardindOscar
+  cache-jardindoscar:
+    container_name: cache-jardindoscar
     image: redis:latest
 
-  directus-jardindOscar:
-    container_name: directus-jardindOscar
+  directus-jardindoscar:
+    container_name: directus-jardindoscar
     image: directus/directus:latest
     ports:
       - 8056:8055
@@ -27,8 +27,8 @@ services:
       - ./backend/directus/database:/directus/database
       - ./backend/directus/extensions:/directus/extensions
     depends_on:
-      - cache-jardindOscar
-      - database-jardindOscar
+      - cache-jardindoscar
+      - database-jardindoscar
     restart: unless-stopped
     environment:
       KEY: ${KEY}
@@ -39,13 +39,13 @@ services:
 
       # DB CONFIGURATION
       DB_CLIENT: ${DB_CLIENT}
-      DB_HOST: database-jardindOscar
+      DB_HOST: database-jardindoscar
       DB_PORT: ${DB_PORT}
       DB_DATABASE: ${MYSQL_DATABASE}
       DB_USER: ${MYSQL_USER}
       DB_PASSWORD: ${MYSQL_PASSWORD}
 
-      REDIS_HOST: cache-jardindOscar
+      REDIS_HOST: cache-jardindoscar
       REDIS_PORT: 6379
 
       CACHE_STORE: "redis"
@@ -70,7 +70,7 @@ services:
 
   nextjs-front-jardindoscar:
     depends_on:
-      - directus-jardindOscar
+      - directus-jardindoscar
     build: frontend
     ports:
       - 3001:3000
