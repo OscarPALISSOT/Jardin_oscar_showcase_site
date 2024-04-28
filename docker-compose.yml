@@ -68,7 +68,7 @@ services:
       STORAGE_LOCAL_DRIVER: "local"
       STORAGE_LOCAL_ROOT: "./backend/uploads"
 
-  nextjs-front-jardindOscar:
+  nextjs-front-jardindoscar:
     depends_on:
       - directus-jardindOscar
     build: frontend
