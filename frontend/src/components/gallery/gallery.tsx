@@ -14,6 +14,10 @@ const Gallery = ({galleryBlock}: GalleryProps) => {
             <BentoGrid
                 images={galleryBlock.images}
             />
+            {/*<br/>
+            <Carrousel
+                images={galleryBlock.images}
+            />*/}
         </div>
     )
 }

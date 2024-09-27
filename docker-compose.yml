@@ -69,6 +69,7 @@ services:
       STORAGE_LOCAL_ROOT: "./backend/uploads"
 
   nextjs-front-jardindoscar:
+    container_name: nextjs-front-jardindoscar
     depends_on:
       - directus-jardindoscar
     build: frontend

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Picture from "@/components/picture";
 
 interface SectionProps {
     heroBlock: HeroType;
@@ -12,9 +12,10 @@ const Hero = ({heroBlock}: SectionProps) => {
                     <p className={'text-lg lg:text-xl xl:text-2xl text-fontColor'}>{heroBlock.subtitle}</p>
                 </div>
                 <div className={'sm:w-1/2'}>
-                    <Image src={process.env.NEXT_PUBLIC_ASSETS_URL + heroBlock.hero_image + '?key=squared-thumb'}
-                           width={1080} height={1080} alt={heroBlock.title}
-                           className={'rounded-xl shadow-md w-full h-auto hover:scale-[102%] duration-300 ease-out transition-transform z-0'}/>
+                    <Picture
+                        image={heroBlock.hero_image}
+                        transformationPreset={'squared-thumb'}
+                    />
                 </div>
             </div>
         </>

@@ -1,5 +1,5 @@
 import Service from "@/components/serviceBlock/service";
-import Image from "next/image";
+import Picture from "@/components/picture";
 
 interface ServiceBlockProps {
     serviceBlock: Service_blockType;
@@ -34,9 +34,11 @@ const ServiceBlock = ({serviceBlock}: ServiceBlockProps) => {
                 <h1 className={'text-2xl lg:text-3xl font-serif font-extrabold text-fontColor mb-2 sm:w-1/2'}>{serviceBlock.catchPhrase}</h1>
                 <p className={'text-lg lg:text-xl text-fontColor sm:w-1/2'}>{serviceBlock.text}</p>
             </div>
-            <Image src={process.env.NEXT_PUBLIC_ASSETS_URL + serviceBlock.thumbnail + '?key=1080p'}
-                   width={1920} height={1080} alt={'thumbnail'}
-                   className={'rounded-xl shadow-md w-full h-auto max-h-[50vh] object-cover mb-6 hover:scale-[102%] duration-300 ease-out transition-transform z-0'}/>
+            <Picture
+                image={serviceBlock.thumbnail}
+                transformationPreset={'1080p'}
+                style={'max-h-[50vh]'}
+            />
         </div>
     )
 }
