@@ -26,7 +26,7 @@ const NavbarMobile = ({links, logo}: NavbarProps) => {
     return (
         <>
             <div
-                className={`text-2xl transition duration-300 font-bold bg-background font-serif sticky top-0 -mx-8 px-8 -left-8 flex flex-col justify-between w-screen z-50 ${!isMenuOpen && scrollY > 0 && 'shadow-[0_6px_12px_0_rgba(0,0,0,0.12)]'}`}>
+                className={`lg:hidden text-2xl transition duration-300 font-bold bg-background font-serif sticky top-0 -mx-8 md:-mx-24 px-8 -left-8 flex flex-col justify-between w-screen z-50 ${!isMenuOpen && scrollY > 0 && 'shadow-[0_6px_12px_0_rgba(0,0,0,0.12)]'}`}>
                 <div className={'flex flex-row justify-between items-center h-20 w-full'}>
                     <Link href="/">
                         <Image

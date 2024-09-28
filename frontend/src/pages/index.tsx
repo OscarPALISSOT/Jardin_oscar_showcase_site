@@ -26,17 +26,14 @@ const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlo
     return (
         <>
             <div className={'bg-background px-8 md:px-24'}>
-                {width < 768 ?
-                    <NavbarMobile
-                        links={links}
-                        logo={logo}
-                    />
-                    :
-                    <Navbar
-                        links={links}
-                        logo={logo}
-                    />
-                }
+                <NavbarMobile
+                    links={links}
+                    logo={logo}
+                />
+                <Navbar
+                    links={links}
+                    logo={logo}
+                />
 
                 {heroBlock &&
                     <Section id={heroBlock.link}>
