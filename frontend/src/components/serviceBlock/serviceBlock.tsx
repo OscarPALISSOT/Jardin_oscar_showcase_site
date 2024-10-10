@@ -20,7 +20,7 @@ const ServiceBlock = ({serviceBlock}: ServiceBlockProps) => {
             </div>
 
             <div
-                className={'my-12 md:-mx-24 -mx-8 h-fit md:h-60 flex flex-col justify-center bg-center bg-no-repeat bg-cover'}
+                className={'my-12 md:-mx-24 2xl:-mx-64 -mx-8 h-fit md:h-60 flex flex-col justify-center bg-center bg-no-repeat bg-cover'}
                 style={{ backgroundImage: `url(${process.env.NEXT_PUBLIC_ASSETS_URL + serviceBlock.banner + '?key=1080p'})` }}
             >
 
@@ -34,11 +34,11 @@ const ServiceBlock = ({serviceBlock}: ServiceBlockProps) => {
                 <h1 className={'text-2xl lg:text-3xl font-serif font-extrabold text-fontColor mb-2 sm:w-1/2'}>{serviceBlock.catchPhrase}</h1>
                 <p className={'text-lg lg:text-xl text-fontColor sm:w-1/2'}>{serviceBlock.text}</p>
             </div>
-            <Picture
-                image={serviceBlock.thumbnail}
-                transformationPreset={'1080p'}
-                style={'max-h-[50vh]'}
-            />
+            {/*<Picture*/}
+            {/*    image={serviceBlock.thumbnail}*/}
+            {/*    transformationPreset={'1080p'}*/}
+            {/*    style={'max-h-[50vh]'}*/}
+            {/*/>*/}
         </div>
     )
 }

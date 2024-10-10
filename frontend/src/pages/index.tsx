@@ -25,7 +25,7 @@ const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlo
 
     return (
         <>
-            <div className={'bg-background px-8 md:px-24'}>
+            <div className={'bg-background px-8 md:px-24 2xl:px-64'}>
                 <NavbarMobile
                     links={links}
                     logo={logo}

@@ -7,7 +7,7 @@ interface BentoGridProps {
 const BentoGrid = ({images}: BentoGridProps) => {
     return (
         <div>
-            <div className="py-4 max-w-screen-2xl mx-auto">
+            <div className="py-4 mx-auto">
                 <div className="grid grid-cols-5 grid-rows-4 gap-4 h-full">
                     <div className="col-span-2 row-span-3 h-full flex flex-col">
                         <BentoItem imageSrc={images[0].directus_files_id}/>
