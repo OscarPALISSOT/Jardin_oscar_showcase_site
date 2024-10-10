@@ -16,7 +16,7 @@ const Navbar = ({links, logo}: NavbarProps) => {
     return (
         <>
             <div
-                className={`hidden lg:flex text-2xl transition duration-300 font-bold bg-background font-serif sticky top-0 2xl:px-64 2xl:-mx-64 -mx-24 px-24 flex-col justify-between z-50 ${scrollY > 0 && 'shadow-[0_6px_12px_0_rgba(0,0,0,0.12)] '}`}>
+                className={`hidden lg:flex text-2xl transition duration-300 font-bold bg-background font-serif sticky top-0 2xl:px-64 2xl:-mx-64 -mx-24 px-24 flex-col justify-between z-50 ${scrollY > 2 && 'shadow-[0_6px_12px_0_rgba(0,0,0,0.12)] '}`}>
                 <div className={'flex flex-row justify-between items-center h-20'}>
                     <Link href="/">
                         <Image
@@ -43,7 +43,7 @@ const Navbar = ({links, logo}: NavbarProps) => {
                     </div>
                 </div>
                 <div
-                    className={`h-0.5 -mx-8 md:-mx-24 2xl:-mx-64 bg-primary origin-right duration-500 scale-x-0 ease-in ${scrollY > 0 && 'scale-x-100'}`}/>
+                    className={`h-0.5 -mx-8 md:-mx-24 2xl:-mx-64 bg-primary origin-right duration-500 scale-x-0 ease-in ${scrollY > 2 && 'scale-x-100'}`}/>
             </div>
         </>
     )

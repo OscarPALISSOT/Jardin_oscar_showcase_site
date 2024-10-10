@@ -34,7 +34,6 @@ const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlo
                     links={links}
                     logo={logo}
                 />
-
                 {heroBlock &&
                     <Section id={heroBlock.link}>
                         <Hero heroBlock={heroBlock}/>
@@ -58,7 +57,6 @@ const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlo
                         <Gallery galleryBlock={galleryBlock}/>
                     </Section>
                 }
-
             </div>
         </>
     )
