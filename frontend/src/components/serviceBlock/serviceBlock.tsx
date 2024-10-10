@@ -1,5 +1,4 @@
 import Service from "@/components/serviceBlock/service";
-import Picture from "@/components/picture";
 
 interface ServiceBlockProps {
     serviceBlock: Service_blockType;
@@ -34,11 +33,6 @@ const ServiceBlock = ({serviceBlock}: ServiceBlockProps) => {
                 <h1 className={'text-2xl lg:text-3xl font-serif font-extrabold text-fontColor mb-2 sm:w-1/2'}>{serviceBlock.catchPhrase}</h1>
                 <p className={'text-lg lg:text-xl text-fontColor sm:w-1/2'}>{serviceBlock.text}</p>
             </div>
-            {/*<Picture*/}
-            {/*    image={serviceBlock.thumbnail}*/}
-            {/*    transformationPreset={'1080p'}*/}
-            {/*    style={'max-h-[50vh]'}*/}
-            {/*/>*/}
         </div>
     )
 }
