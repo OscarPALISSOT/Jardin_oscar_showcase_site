@@ -18,8 +18,10 @@ const ScrollDownCTA = ({ctaScroll, nextSection}: ScrollDownCTAProps) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setXMove((prev) => prev + (xMouse - prev) / 15);
-        }, 8);
+            isHovered ?
+                setXMove((prev) => Math.round(prev + (xMouse - prev) / 15)) :
+                setXMove(window.innerWidth / 2);
+        }, 6);
 
         return () => clearInterval(interval);
     }, [xMouse]);
@@ -45,8 +47,8 @@ const ScrollDownCTA = ({ctaScroll, nextSection}: ScrollDownCTAProps) => {
                     ))}
                 </div>
                 <div
-                    className={'z-0 absolute rounded-full w-80 h-80 bg-radial-gradient from-neutral-600 to-65% translate-y-1/2 -translate-x-1/2 '}
-                    style={isHovered ? {left: xMove} : {left: '50%'}}
+                    className={'z-0 absolute rounded-full w-80 h-80 bg-radial-gradient from-neutral-600 to-65% translate-y-1/2 -translate-x-1/2'}
+                    style={isHovered ? {left: xMove} : {left: '50%', transition: 'left 200ms ease-in'}}
                 />
             </div>
 
