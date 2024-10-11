@@ -12,5 +12,4 @@ interface Service_blockType {
     banner_text: string;
     catchPhrase: string;
     text: string;
-    thumbnail: string;
 }

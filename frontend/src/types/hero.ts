@@ -4,4 +4,5 @@ interface HeroType {
     title: string;
     subtitle: string;
     hero_image: string;
+    cta_scroll: string;
 }

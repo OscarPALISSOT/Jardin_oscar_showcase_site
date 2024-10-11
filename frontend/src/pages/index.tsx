@@ -1,9 +1,8 @@
 import React from "react";
 import {createDirectus, readItems, rest} from "@directus/sdk";
 import Navbar from "@/components/navbar/navbar";
-import useDeviceSize from "@/hooks/useWidth";
 import NavbarMobile from "@/components/navbar/navbarMobile";
-import Hero from "@/components/hero";
+import Hero from "@/components/heroBlock/hero";
 import Section from "@/components/section";
 import ServiceBlock from "@/components/serviceBlock/serviceBlock";
 import Renovation from "@/components/renovation";
@@ -21,8 +20,6 @@ interface HomeProps {
 }
 const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlock}: HomeProps) => {
 
-    const width = useDeviceSize();
-
     return (
         <>
             <div className={'bg-background px-8 md:px-24 2xl:px-64'}>
@@ -36,7 +33,10 @@ const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlo
                 />
                 {heroBlock &&
                     <Section id={heroBlock.link}>
-                        <Hero heroBlock={heroBlock}/>
+                        <Hero
+                            heroBlock={heroBlock}
+                            nextSection={links[1]}
+                        />
                     </Section>
                 }
 
