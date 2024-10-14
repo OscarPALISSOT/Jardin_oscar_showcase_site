@@ -1,6 +1,7 @@
 import useWidth from "@/hooks/useWidth";
 import {useEffect, useState} from "react";
 import CarrouselItem from "@/components/carrousel/carrouselItem";
+import CarrouselBtn from "@/components/carrousel/carrouselBtn";
 
 type CarrouselProps = {
     images: DirectusFile[];
@@ -26,22 +27,26 @@ const Carrousel = ({images}: CarrouselProps) => {
     }, [currentItem]);
 
     return (
-        <div className={'relative'}>
-            <div className={'w-full overflow-hidden rounded-xl'}>
-                <div id={'carrousel__container'} className={'flex flex-row items-center transition duration-500 h-[calc(100dvh_-_160px)]'}
-                     style={{width: (images.length * 100) + "%"}}>
-                    {images.map((image) => (
-                        <div
-                            style={{width: (100 / images.length) + "%"}}
-                            key={image.id}
-                        >
-                            <CarrouselItem
-                                image={images[4]}
-                            />
-                        </div>
-                    ))}
-                </div>
+        <div className={'relative h-full overflow-y-hidden'}>
+            <div
+                id={'carrousel__container'}
+                className={'flex flex-row items-center h-full transition-transform duration-300 ease-in-out'}
+                style={{width: (images.length * 100) + "%"}}
+            >
+                {images.map((image, index) => (
+                    <div
+                        style={{width: (100 / images.length) + "%"}}
+                        key={image.id}
+                        className={'h-full'}
+                    >
+                        <CarrouselItem
+                            image={images[index]}
+                        />
+                    </div>
+                ))}
             </div>
+            <CarrouselBtn direction={"left"} onClick={() => goToItem(currentItem - 1)}/>
+            <CarrouselBtn direction={"right"} onClick={() => goToItem(currentItem + 1)}/>
         </div>
     );
 }
