@@ -2,6 +2,7 @@ import useWidth from "@/hooks/useWidth";
 import {useEffect, useState} from "react";
 import CarrouselItem from "@/components/carrousel/carrouselItem";
 import CarrouselBtn from "@/components/carrousel/carrouselBtn";
+import CarrouselPagination from "@/components/carrousel/carrouselPagination";
 
 type CarrouselProps = {
     images: DirectusFile[];
@@ -9,8 +10,7 @@ type CarrouselProps = {
 
 const Carrousel = ({images}: CarrouselProps) => {
 
-    const [currentItem, setCurrentItem] = useState(0)
-    const width = useWidth()
+    const [currentItem, setCurrentItem] = useState(0);
 
     const goToItem = (index: number) => {
         if (index < 0) {
@@ -27,10 +27,10 @@ const Carrousel = ({images}: CarrouselProps) => {
     }, [currentItem]);
 
     return (
-        <div className={'relative h-full overflow-y-hidden'}>
+        <div className={'relative h-full overflow-hidden'}>
             <div
                 id={'carrousel__container'}
-                className={'flex flex-row items-center h-full transition-transform duration-300 ease-in-out'}
+                className={'flex flex-row items-center h-full transition-transform duration-500 ease-in-out'}
                 style={{width: (images.length * 100) + "%"}}
             >
                 {images.map((image, index) => (
@@ -45,6 +45,10 @@ const Carrousel = ({images}: CarrouselProps) => {
                     </div>
                 ))}
             </div>
+            <CarrouselPagination
+                currentItem={currentItem}
+                totalItems={images.length}
+            />
             <CarrouselBtn direction={"left"} onClick={() => goToItem(currentItem - 1)}/>
             <CarrouselBtn direction={"right"} onClick={() => goToItem(currentItem + 1)}/>
         </div>
