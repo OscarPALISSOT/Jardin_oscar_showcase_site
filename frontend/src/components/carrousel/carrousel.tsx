@@ -12,7 +12,6 @@ const Carrousel = ({images}: CarrouselProps) => {
     const [currentItem, setCurrentItem] = useState(0);
     const [startTouchX, setStartTouchX] = useState(0);
     const [isTouching, setIsTouching] = useState(false);
-    const swipeThreshold = document.body.clientWidth / 4;
 
     const goToItem = (index: number) => {
         if (index < 0) {
@@ -44,6 +43,7 @@ const Carrousel = ({images}: CarrouselProps) => {
     const handleTouchMove = (e: React.TouchEvent) => {
         const currentTouchX = e.touches[0].clientX;
         const touchDifference = startTouchX - currentTouchX;
+        const swipeThreshold = document.body.clientWidth / 4;
 
         if (touchDifference > swipeThreshold || touchDifference < -swipeThreshold) {
             return;
@@ -63,6 +63,7 @@ const Carrousel = ({images}: CarrouselProps) => {
     const handleTouchEnd = (e: React.TouchEvent) => {
         const endTouchX = e.changedTouches[0].clientX;
         const touchDifference = startTouchX - endTouchX;
+        const swipeThreshold = document.body.clientWidth / 4;
 
         if (currentItem === 0 && touchDifference < 0) {
             return;
