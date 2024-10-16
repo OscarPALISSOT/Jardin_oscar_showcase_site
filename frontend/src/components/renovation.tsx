@@ -4,7 +4,6 @@ import Picture from "@/components/picture";
 
 interface RenovationProps {
     renovationBlock: RenovationType;
-
 }
 
 const Renovation = ({renovationBlock}: RenovationProps) => {
