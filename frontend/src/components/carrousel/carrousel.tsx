@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import CarrouselItem from "@/components/carrousel/carrouselItem";
 import CarrouselBtn from "@/components/carrousel/carrouselBtn";
 import CarrouselPagination from "@/components/carrousel/carrouselPagination";
@@ -26,7 +26,7 @@ const Carrousel = ({images}: CarrouselProps) => {
 
     useEffect(() => {
         document.getElementById('carrousel__container')!.style.transform = `translate3d(${currentItem * -100 / images.length}%, 0, 0)`
-    }, [currentItem]);
+    }, [currentItem, images.length]);
 
     useEffect(() => {
         if (isTouching) {

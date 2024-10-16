@@ -24,7 +24,7 @@ const ScrollDownCTA = ({ctaScroll, nextSection}: ScrollDownCTAProps) => {
         }, 6);
 
         return () => clearInterval(interval);
-    }, [xMouse]);
+    }, [xMouse, isHovered]);
 
     return (
         <>
