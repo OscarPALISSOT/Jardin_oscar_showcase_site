@@ -17,7 +17,7 @@ const Gallery = ({galleryBlock}: GalleryProps) => {
                     images={galleryBlock.images}
                 />
             </span>
-            <div className={'lg:hidden my-3 md:-mx-24 -mx-8 h-[calc(80dvh_-_160px)]'}>
+            <div className={'lg:hidden my-3 md:-mx-24 -mx-8 h-[calc(80vh_-_160px)]'}>
                 <Carrousel
                     images={galleryBlock.images}
                 />
