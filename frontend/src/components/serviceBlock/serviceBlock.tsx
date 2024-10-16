@@ -7,7 +7,7 @@ interface ServiceBlockProps {
 const ServiceBlock = ({serviceBlock}: ServiceBlockProps) => {
     return (
         <div className={'mt-10'}>
-            <div className={'flex flex-col sm:flex-row sm:items-start gap-10 mb-8'}>
+            <div className={'flex flex-col lg:flex-row sm:items-start gap-10 mb-8'}>
                 {serviceBlock.services.map((service, index) => {
                     return (
                         <Service
