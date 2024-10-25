@@ -84,7 +84,7 @@ const ContactForm = () => {
                 type={'submit'}
             />
 
-            {submitted && <p>Thank you for your message! We'll get back to you soon.</p>}
+            {submitted && <p>Merci pour votre message</p>}
         </form>
     );
 };
