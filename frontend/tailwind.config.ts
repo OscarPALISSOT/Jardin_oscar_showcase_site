@@ -7,14 +7,14 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                'primary': '#dc891c',
-                'secondary': '#e9e4de',
-                'primaryHover': '#dc891c',
-                'secondaryHover': '#e9e4de',
-                'background': '#f1f0ee',
-                'fontColor': '#19170e',
-                'fontSecondary': '#8e7657',
-                'fontColorLight': '#f4f4f4',
+                'primary': 'var(--primary)',
+                'secondary': 'var(--secondary)',
+                'primaryHover': 'var(--primaryHover)',
+                'secondaryHover': 'var(--secondaryHover)',
+                'background': 'var(--background)',
+                'fontColor': 'var(--fontColor)',
+                'fontSecondary': 'var(--fontSecondary)',
+                'fontColorLight': 'var(--fontColorLight)',
             },
             fontFamily: {
                 'serif': ['Noto Serif', 'serif'],
