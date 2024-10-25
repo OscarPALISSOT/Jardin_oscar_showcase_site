@@ -7,6 +7,7 @@ import Section from "@/components/section";
 import ServiceBlock from "@/components/serviceBlock/serviceBlock";
 import Renovation from "@/components/renovation";
 import Gallery from "@/components/gallery/gallery";
+import ContactBlock from "@/components/contact/contactBlock";
 
 const client = createDirectus(process.env.NEXT_PUBLIC_DIRECTUS_URL!).with(rest());
 
@@ -17,8 +18,9 @@ interface HomeProps {
     serviceBlock: Service_blockType;
     renovationBlock: RenovationType;
     galleryBlock: GalleryType;
+    contactBlock: ContactType;
 }
-const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlock}: HomeProps) => {
+const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlock, contactBlock}: HomeProps) => {
 
     return (
         <>
@@ -57,6 +59,12 @@ const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlo
                         <Gallery galleryBlock={galleryBlock}/>
                     </Section>
                 }
+
+                {contactBlock &&
+                    <Section id={contactBlock.link}>
+                        <ContactBlock contactBlock={contactBlock}/>
+                    </Section>
+                }
             </div>
         </>
     )
@@ -93,13 +101,22 @@ export async function getServerSideProps() {
         })
     ) as unknown as GalleryType;
 
+    const contact = await client.request(
+        readItems('contact', {
+            fields: ['*', {}],
+        })
+    ) as unknown as ContactType;
+
+    contact.email = btoa(contact.email);
+
     return {
         props: {
             heroBlock: hero,
             serviceBlock: service_block,
             renovationBlock: renovation,
             galleryBlock: gallery,
-            links: [hero.link, service_block.link, renovation.link, gallery.link],
+            contactBlock: contact,
+            links: [hero.link, service_block.link, renovation.link, gallery.link, contact.link],
             logo: hero.logo,
         },
     };
