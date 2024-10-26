@@ -24,6 +24,15 @@ const Carrousel = ({images}: CarrouselProps) => {
     }
 
     useEffect(() => {
+        const interval = setInterval(() => {
+            !isTouching &&
+            goToItem(currentItem + 1);
+        }, 4000);
+
+        return () => clearInterval(interval);
+    }, [currentItem, isTouching]);
+
+    useEffect(() => {
         document.getElementById('carrousel__container')!.style.transform = `translate3d(${currentItem * -100 / images.length}%, 0, 0)`
     }, [currentItem, images.length]);
 
