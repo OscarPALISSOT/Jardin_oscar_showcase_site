@@ -1,5 +1,5 @@
 interface ButtonProps {
-    onClick?: () => void;
+    onClick?: (e: any) => void;
     text: string;
     style?: 'primary' | 'secondary';
     type?: 'submit' | 'button';

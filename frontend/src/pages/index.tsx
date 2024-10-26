@@ -38,6 +38,7 @@ const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlo
                         <Hero
                             heroBlock={heroBlock}
                             nextSection={links[1]}
+                            contactLink={links[4]}
                         />
                     </Section>
                 }
