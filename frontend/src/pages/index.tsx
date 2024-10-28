@@ -8,6 +8,7 @@ import ServiceBlock from "@/components/serviceBlock/serviceBlock";
 import Renovation from "@/components/renovation";
 import Gallery from "@/components/gallery/gallery";
 import ContactBlock from "@/components/contact/contactBlock";
+import Footer from "@/components/footer";
 
 const client = createDirectus(process.env.NEXT_PUBLIC_DIRECTUS_URL!).with(rest());
 
@@ -66,6 +67,7 @@ const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlo
                         <ContactBlock contactBlock={contactBlock}/>
                     </Section>
                 }
+                <Footer links={links}/>
             </div>
         </>
     )
