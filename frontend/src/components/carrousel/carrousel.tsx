@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import CarrouselItem from "@/components/carrousel/carrouselItem";
 import CarrouselBtn from "@/components/carrousel/carrouselBtn";
 import CarrouselPagination from "@/components/carrousel/carrouselPagination";
@@ -13,7 +13,7 @@ const Carrousel = ({images}: CarrouselProps) => {
     const [startTouchX, setStartTouchX] = useState(0);
     const [isTouching, setIsTouching] = useState(false);
 
-    const goToItem = (index: number) => {
+    const goToItem = useCallback((index: number) => {
         if (index < 0) {
             currentItem == 0 ? setCurrentItem(images.length - 1) : setCurrentItem(0);
         } else if (index >= images.length - 1 || (images[currentItem + 1] === undefined && index > currentItem)) {
@@ -21,7 +21,7 @@ const Carrousel = ({images}: CarrouselProps) => {
         } else {
             setCurrentItem(index)
         }
-    }
+    }, [currentItem, images.length, images]);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -30,7 +30,7 @@ const Carrousel = ({images}: CarrouselProps) => {
         }, 4000);
 
         return () => clearInterval(interval);
-    }, [currentItem, isTouching]);
+    }, [currentItem, isTouching, goToItem]);
 
     useEffect(() => {
         document.getElementById('carrousel__container')!.style.transform = `translate3d(${currentItem * -100 / images.length}%, 0, 0)`
