@@ -31,7 +31,7 @@ const Footer = ({links}: FooterProps) => {
                 })}
             </li>
             <div className={'flex flex-col xl:flex-row gap-3 xl:gap-6 w-1/2 xl:justify-end'}>
-                <FooterLink link={'Mentions légales'}/>
+                <FooterLink link={'Mentions légales'} href={'/mentions-legales'}/>
                 <p className={'text-md lg:text-lg text-fontColor'}>{`© ${currentYear} Le jardin d'Oscar. Tous droits réservés.`}</p>
             </div>
         </footer>
@@ -41,14 +41,16 @@ const Footer = ({links}: FooterProps) => {
 
 interface FooterLinkProps {
     link: string;
+    href?: string;
 }
 
-const FooterLink = ({link}: FooterLinkProps) => {
+const FooterLink = ({link, href}: FooterLinkProps) => {
     return (
         <Link
             className={'cursor-pointer text-md lg:text-lg text-fontColor hover:text-primary transition-all hover:decoration-0 duration-150 ease-in-out underline decoration-2 decoration-primary'}
-            href={`/#${link}`}
+            href={href ? href :`/#${link}`}
             onClick={(e) => {
+                !href &&
                 navTo(e, link)
             }}
         >
