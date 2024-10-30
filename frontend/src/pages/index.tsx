@@ -110,8 +110,6 @@ export async function getServerSideProps() {
         })
     ) as unknown as ContactType;
 
-    contact.email = btoa(contact.email);
-
     return {
         props: {
             heroBlock: hero,
