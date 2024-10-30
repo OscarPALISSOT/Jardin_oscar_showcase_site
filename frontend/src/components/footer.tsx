@@ -32,7 +32,7 @@ const Footer = ({links}: FooterProps) => {
             </li>
             <div className={'flex flex-col xl:flex-row gap-3 xl:gap-6 w-1/2 xl:justify-end'}>
                 <FooterLink link={'Mentions légales'}/>
-                <p className={'text-md lg:text-lg text-fontColor'}>{`© {currentYear} Le jardin d'Oscar. Tous droits réservés.`}</p>
+                <p className={'text-md lg:text-lg text-fontColor'}>{`© ${currentYear} Le jardin d'Oscar. Tous droits réservés.`}</p>
             </div>
 
         </footer>
