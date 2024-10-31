@@ -1,7 +1,7 @@
 import Link from "next/link";
-import navTo from "@/modules/navTo";
 import useScroll from "@/hooks/useScrool";
 import {useEffect, useState} from "react";
+import useNavTo from "@/modules/navTo";
 
 interface FooterProps {
     links: string[];
@@ -45,6 +45,9 @@ interface FooterLinkProps {
 }
 
 const FooterLink = ({link, href}: FooterLinkProps) => {
+
+    const navTo = useNavTo();
+
     return (
         <Link
             className={'cursor-pointer text-md lg:text-lg text-fontColor hover:text-primary transition-all hover:decoration-0 duration-150 ease-in-out underline decoration-2 decoration-primary'}

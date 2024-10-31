@@ -1,7 +1,7 @@
 import Picture from "@/components/picture";
 import ScrollDownCTA from "@/components/heroBlock/scrollDownCTA";
 import Button from "@/components/button";
-import navTo from "@/modules/navTo";
+import useNavTo from "@/modules/navTo";
 
 interface SectionProps {
     heroBlock: HeroType;
@@ -10,6 +10,9 @@ interface SectionProps {
 }
 
 const Hero = ({heroBlock, nextSection, contactLink}: SectionProps) => {
+
+    const navTo = useNavTo();
+
     return (
         <div className={'relative flex-grow flex items-center'}>
             <div className={'w-full lg:mb-32 flex flex-col sm:flex-row sm:items-center'}>

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import useScroll from "@/hooks/useScrool";
 import Link from "next/link";
 import Image from "next/image";
-import navTo from "@/modules/navTo";
+import useNavTo from "@/modules/navTo";
 
 interface NavbarProps {
     links: string[];
@@ -12,6 +12,7 @@ interface NavbarProps {
 const NavbarMobile = ({links, logo}: NavbarProps) => {
 
     const scrollY = useScroll();
+    const navTo = useNavTo();
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 

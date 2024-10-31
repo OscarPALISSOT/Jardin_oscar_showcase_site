@@ -1,7 +1,7 @@
 import useScroll from "@/hooks/useScrool";
-import navTo from "@/modules/navTo";
 import useMousePosition from "@/hooks/useMousePosition";
 import {useEffect, useState} from "react";
+import useNavTo from "@/modules/navTo";
 
 interface ScrollDownCTAProps {
     ctaScroll: string;
@@ -11,6 +11,7 @@ interface ScrollDownCTAProps {
 const ScrollDownCTA = ({ctaScroll, nextSection}: ScrollDownCTAProps) => {
 
     const scrollY = useScroll();
+    const navTo = useNavTo();
     const delays = [0, -0.2, -0.4];
     const xMouse = useMousePosition().x;
     const [isHovered, setIsHovered] = useState(false);

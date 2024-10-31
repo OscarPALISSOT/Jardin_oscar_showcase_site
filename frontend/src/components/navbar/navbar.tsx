@@ -2,8 +2,8 @@ import React from "react";
 import useScroll from "@/hooks/useScrool";
 import Link from "next/link";
 import Image from "next/image";
-import navTo from "@/modules/navTo";
 import useCurrentSection from "@/hooks/useCurrentSection";
+import useNavTo from "@/modules/navTo";
 
 interface NavbarProps {
     links: string[];
@@ -14,6 +14,7 @@ const Navbar = ({links, logo}: NavbarProps) => {
 
     const scrollY = useScroll();
     const currentSection = useCurrentSection(links);
+    const navTo = useNavTo();
 
     return (
         <>
