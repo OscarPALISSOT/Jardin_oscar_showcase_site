@@ -21,7 +21,7 @@ const Carrousel = ({images}: CarrouselProps) => {
         } else {
             setCurrentItem(index)
         }
-    }, [currentItem, images.length, images]);
+    }, [currentItem, images]);
 
     useEffect(() => {
         const interval = setInterval(() => {
