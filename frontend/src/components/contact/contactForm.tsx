@@ -1,5 +1,7 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import Button from "@/components/button";
+import {createDirectus, createItem, rest} from "@directus/sdk";
+const client = createDirectus(process.env.NEXT_PUBLIC_DIRECTUS_URL!).with(rest());
 
 interface FormData {
     email: string;
@@ -17,23 +19,21 @@ const ContactForm = () => {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // try {
-        //     const response = await fetch('/api/contact', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify(formData),
-        //     });
-        //
-        //     if (response.ok) {
-        //         setSubmitted(true);
-        //     } else {
-        //         console.error('Failed to submit form');
-        //     }
-        // } catch (error) {
-        //     console.error('An error occurred:', error);
-        // }
+        if (submitted) {
+            return;
+        }
+        try {
+            const response = await client.request(createItem('contact_messages', {
+                email: formData.email,
+                message: formData.message,
+            }));
+            if (response) {
+                setSubmitted(true);
+                setFormData({ email: '', message: '' });
+            }
+        } catch (error) {
+            console.error('Erreur lors de la soumission du formulaire:', error);
+        }
     };
 
     return (
@@ -102,13 +102,15 @@ const ContactForm = () => {
                     Message :
                 </span>
             </label>
-            <Button
-                text={'Envoyer'}
-                style={'primary'}
-                type={'submit'}
-            />
-
-            {submitted && <p>Merci pour votre message</p>}
+            <div className={'flex flex-row gap-6 items-end'}>
+                <Button
+                    text={'Envoyer'}
+                    style={'primary'}
+                    type={'submit'}
+                    disabled={submitted}
+                />
+                {submitted && <p className={'text-lg lg:text-xl text-fontColor'}>Merci pour votre message.</p>}
+            </div>
         </form>
     );
 };

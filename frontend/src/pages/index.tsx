@@ -1,5 +1,5 @@
 import React from "react";
-import {createDirectus, readItems, rest} from "@directus/sdk";
+import {createDirectus, readSingleton, rest} from "@directus/sdk";
 import Navbar from "@/components/navbar/navbar";
 import NavbarMobile from "@/components/navbar/navbarMobile";
 import Hero from "@/components/heroBlock/hero";
@@ -77,13 +77,13 @@ const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlo
 export async function getServerSideProps() {
 
     const hero = await client.request(
-        readItems('hero', {
+        readSingleton('hero', {
             fields: ['*', {}],
         })
     ) as unknown as HeroType;
 
     const service_block = await client.request(
-        readItems('service_block', {
+        readSingleton('service_block', {
             fields: ['*', {
                 services: ['*', {}]
             }],
@@ -91,13 +91,13 @@ export async function getServerSideProps() {
     ) as unknown as Service_blockType;
 
     const renovation = await client.request(
-        readItems('renovation', {
+        readSingleton('renovation', {
             fields: ['*', {}],
         })
     ) as unknown as RenovationType;
 
     const gallery = await client.request(
-        readItems('gallery', {
+        readSingleton('gallery', {
             fields: ['*', {
                 images: ['*', {}]
             }],
@@ -105,7 +105,7 @@ export async function getServerSideProps() {
     ) as unknown as GalleryType;
 
     const contact = await client.request(
-        readItems('contact', {
+        readSingleton('contact', {
             fields: ['*', {}],
         })
     ) as unknown as ContactType;

@@ -2,7 +2,7 @@ import NavbarMobile from "@/components/navbar/navbarMobile";
 import Navbar from "@/components/navbar/navbar";
 import Footer from "@/components/footer";
 import React from "react";
-import {createDirectus, readItems, rest} from "@directus/sdk";
+import {createDirectus, readSingleton, rest} from "@directus/sdk";
 
 const client = createDirectus(process.env.NEXT_PUBLIC_DIRECTUS_URL!).with(rest());
 
@@ -39,37 +39,37 @@ const MentionsLegales = ({links, logo, mentions}: MentionsLegalesProps) => {
 export async function getServerSideProps() {
 
     const hero = await client.request(
-        readItems('hero', {
+        readSingleton('hero', {
             fields: ['*', {}],
         })
     ) as unknown as HeroType;
 
     const service_block = await client.request(
-        readItems('service_block', {
+        readSingleton('service_block', {
             fields: ['link', {}],
         })
     ) as unknown as Service_blockType;
 
     const renovation = await client.request(
-        readItems('renovation', {
+        readSingleton('renovation', {
             fields: ['link', {}],
         })
     ) as unknown as RenovationType;
 
     const gallery = await client.request(
-        readItems('gallery', {
+        readSingleton('gallery', {
             fields: ['link', {}],
         })
     ) as unknown as GalleryType;
 
     const contact = await client.request(
-        readItems('contact', {
+        readSingleton('contact', {
             fields: ['link', {}],
         })
     ) as unknown as ContactType;
 
     const mentions = await client.request(
-        readItems('mentions_legales', {
+        readSingleton('mentions_legales', {
             fields: ['*', {}],
         })
     ) as unknown as MentionsType;
