@@ -78,7 +78,7 @@ services:
 
   mailserver-jardindoscar:
     image: docker.io/mailserver/docker-mailserver:latest
-    container_name: mailserver
+    container_name: mailserver-jardindoscar
     hostname: mail
     domainname: <domain>
     env_file: .env
@@ -106,7 +106,7 @@ services:
 
   certbot-mailserver-jardindoscar:
     image: certbot/certbot
-    container_name: certbot
+    container_name: certbot-mailserver-jardindoscar
     ports:
       - "80:80"
     volumes:
