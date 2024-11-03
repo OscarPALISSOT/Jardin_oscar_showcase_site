@@ -79,8 +79,7 @@ services:
   mailserver-jardindoscar:
     image: docker.io/mailserver/docker-mailserver:latest
     container_name: mailserver-jardindoscar
-    hostname: mail
-    domainname: <domain>
+    domainname: jardindoscar.fr
     env_file: .env
     ports:
       - "25:25"    # SMTP  (explicit TLS => STARTTLS)
@@ -93,7 +92,7 @@ services:
       - ./mailserver/dms/mail-state/:/var/mail-state/
       - ./mailserver/dms/mail-logs/:/var/log/mail/
       - ./mailserver/dms/config/:/tmp/docker-mailserver/
-      - ./mailserver/letsencrypt:/etc/letsencrypt
+      - /etc/letsencrypt:/etc/letsencrypt
       - /etc/localtime:/etc/localtime:ro
     restart: always
     stop_grace_period: 1m
@@ -103,12 +102,3 @@ services:
       test: "ss --listening --tcp | grep -P 'LISTEN.+:smtp' || exit 1"
       timeout: 3s
       retries: 0
-
-  certbot-mailserver-jardindoscar:
-    image: certbot/certbot
-    container_name: certbot-mailserver-jardindoscar
-    volumes:
-      - ./mailserver/letsencrypt:/etc/letsencrypt
-      - ./mailserver/certbot/logs:/var/log/letsencrypt/
-      - ./mailserver/certbot-webroot:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot certonly --webroot -w /var/www/certbot -d mail.jardindoscar.fr --agree-tos --non-interactive --force-renewal; sleep 12h & wait $!; done'"
