@@ -52,9 +52,11 @@ services:
       EMAIL_TRANSPORT: "smtp"
       EMAIL_SMTP_HOST: jardindoscar.fr
       EMAIL_SMTP_PORT: 587
-      EMAIL_SMTP_SECURE: "false"
-      SMTP_USER: ${EMAIL_SMTP_USER}
-      SMTP_PASS: ${EMAIL_SMTP_PASS}
+      EMAIL_SMTP_POOL: "true"
+      EMAIL_SMTP_SECURE: "true"
+      EMAIL_SMTP_IGNORE_TLS: "false"
+      EMAIL_SMTP_USER: ${EMAIL_SMTP_USER}
+      EMAIL_SMTP_PASS: ${EMAIL_SMTP_PASS}
       EMAIL_SMTP_FROM: "noreply@jardindoscar.fr"
 
       CACHE_STORE: "redis"
