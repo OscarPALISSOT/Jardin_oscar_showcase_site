@@ -48,6 +48,14 @@ services:
       REDIS_HOST: cache-jardindoscar
       REDIS_PORT: 6379
 
+      # SMTP CONFIGURATION
+      SMTP_HOST: mailserver-jardindoscar
+      SMTP_PORT: 587
+      SMTP_SECURE: "false"
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      SMTP_FROM: "noreply@jardindoscar.fr"
+
       CACHE_STORE: "redis"
       RATE_LIMITER_STORE: "redis"
       SYNCHRONIZATION_STORE: "redis"
