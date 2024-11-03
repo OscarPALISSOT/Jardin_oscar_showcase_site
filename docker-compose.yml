@@ -49,12 +49,13 @@ services:
       REDIS_PORT: 6379
 
       # SMTP CONFIGURATION
-      SMTP_HOST: mailserver-jardindoscar
-      SMTP_PORT: 587
-      SMTP_SECURE: "false"
-      SMTP_USER: ${SMTP_USER}
-      SMTP_PASS: ${SMTP_PASS}
-      SMTP_FROM: "noreply@jardindoscar.fr"
+      EMAIL_TRANSPORT: "smtp"
+      EMAIL_SMTP_HOST: mailserver-jardindoscar
+      EMAIL_SMTP_PORT: 587
+      EMAIL_SMTP_SECURE: "false"
+      EMAIL_SMTP_USER: ${SMTP_USER}
+      EMAIL_SMTP_PASS: ${SMTP_PASS}
+      EMAIL_SMTP_FROM: "noreply@jardindoscar.fr"
 
       CACHE_STORE: "redis"
       RATE_LIMITER_STORE: "redis"
