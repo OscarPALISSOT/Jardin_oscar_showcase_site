@@ -12,6 +12,8 @@ services:
         MYSQL_DATABASE: ${MYSQL_DATABASE}
         MYSQL_USER: ${MYSQL_USER}
         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - jardindoscar-net
 
   cache-jardindoscar:
     container_name: cache-jardindoscar
@@ -77,6 +79,8 @@ services:
       STORAGE_LOCATIONS: "local"
       STORAGE_LOCAL_DRIVER: "local"
       STORAGE_LOCAL_ROOT: "./backend/uploads"
+    networks:
+      - jardindoscar-net
 
   nextjs-front-jardindoscar:
     container_name: nextjs-front-jardindoscar
@@ -85,6 +89,8 @@ services:
     build: frontend
     ports:
       - 3001:3000
+    networks:
+      - jardindoscar-net
 
   mailserver-jardindoscar:
     image: docker.io/mailserver/docker-mailserver:latest
@@ -113,3 +119,9 @@ services:
       test: "ss --listening --tcp | grep -P 'LISTEN.+:smtp' || exit 1"
       timeout: 3s
       retries: 0
+    networks:
+      - jardindoscar-net
+
+networks:
+  jardindoscar-net:
+    driver: bridge
