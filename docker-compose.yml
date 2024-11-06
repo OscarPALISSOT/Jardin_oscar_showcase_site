@@ -18,6 +18,8 @@ services:
   cache-jardindoscar:
     container_name: cache-jardindoscar
     image: redis:latest
+    networks:
+      - jardindoscar-net
 
   directus-jardindoscar:
     container_name: directus-jardindoscar
