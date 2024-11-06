@@ -82,7 +82,8 @@ services:
       STORAGE_LOCAL_DRIVER: "local"
       STORAGE_LOCAL_ROOT: "./backend/uploads"
     networks:
-      - jardindoscar-net
+      jardindoscar-net:
+        ipv4_address: 192.168.128.1
 
   nextjs-front-jardindoscar:
     container_name: nextjs-front-jardindoscar
@@ -121,9 +122,14 @@ services:
       test: "ss --listening --tcp | grep -P 'LISTEN.+:smtp' || exit 1"
       timeout: 3s
       retries: 0
+    extra_hosts:
+      - "mail.jardindoscar.fr:192.168.128.1"
     networks:
       - jardindoscar-net
 
 networks:
   jardindoscar-net:
     driver: bridge
+    ipam:
+      config:
+        - subnet: "192.168.128.0/24"
