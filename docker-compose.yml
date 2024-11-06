@@ -13,13 +13,13 @@ services:
         MYSQL_USER: ${MYSQL_USER}
         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     networks:
-      - jardindoscar-net
+      - vps-network
 
   cache-jardindoscar:
     container_name: cache-jardindoscar
     image: redis:latest
     networks:
-      - jardindoscar-net
+      - vps-network
 
   directus-jardindoscar:
     container_name: directus-jardindoscar
@@ -82,7 +82,7 @@ services:
       STORAGE_LOCAL_DRIVER: "local"
       STORAGE_LOCAL_ROOT: "./backend/uploads"
     networks:
-      - jardindoscar-net
+      - vps-network
 
   nextjs-front-jardindoscar:
     container_name: nextjs-front-jardindoscar
@@ -92,7 +92,7 @@ services:
     ports:
       - 3001:3000
     networks:
-      - jardindoscar-net
+      - vps-network
 
   mailserver-jardindoscar:
     image: docker.io/mailserver/docker-mailserver:latest
@@ -122,8 +122,8 @@ services:
       timeout: 3s
       retries: 0
     networks:
-      - jardindoscar-net
+      - vps-network
 
 networks:
-  jardindoscar-net:
-    driver: bridge
+  vps-network:
+    external: true
