@@ -122,10 +122,10 @@ services:
       test: "ss --listening --tcp | grep -P 'LISTEN.+:smtp' || exit 1"
       timeout: 3s
       retries: 0
-    extra_hosts:
-      - "mail.jardindoscar.fr:192.168.128.1"
     networks:
       - jardindoscar-net
+    extra_hosts:
+      - "mail.jardindoscar.fr:192.168.128.1"
 
 networks:
   jardindoscar-net:
