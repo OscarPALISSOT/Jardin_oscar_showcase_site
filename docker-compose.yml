@@ -54,7 +54,7 @@ services:
 
       # SMTP CONFIGURATION
       EMAIL_TRANSPORT: "smtp"
-      EMAIL_SMTP_HOST: mailserver-jardindoscar
+      EMAIL_SMTP_HOST: mail.jardindoscar.fr
       EMAIL_SMTP_PORT: 587
       EMAIL_SMTP_POOL: "true"
       EMAIL_SMTP_SECURE: "false"
@@ -97,7 +97,7 @@ services:
   mailserver-jardindoscar:
     image: docker.io/mailserver/docker-mailserver:latest
     container_name: mailserver-jardindoscar
-    domainname: mail.jardindoscar.fr
+    domainname: jardindoscar.fr
     env_file: .env
     ports:
       - "25:25"    # SMTP  (explicit TLS => STARTTLS)
