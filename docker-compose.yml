@@ -13,13 +13,15 @@ services:
         MYSQL_USER: ${MYSQL_USER}
         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     networks:
-      - jardindoscar-net
+      jardindoscar-net:
+        ipv4_address: 192.168.129.1
 
   cache-jardindoscar:
     container_name: cache-jardindoscar
     image: redis:latest
     networks:
-      - jardindoscar-net
+      jardindoscar-net:
+        ipv4_address: 192.168.129.2
 
   directus-jardindoscar:
     container_name: directus-jardindoscar
@@ -83,7 +85,7 @@ services:
       STORAGE_LOCAL_ROOT: "./backend/uploads"
     networks:
       jardindoscar-net:
-        ipv4_address: 192.168.128.2
+        ipv4_address: 192.168.129.3
 
   nextjs-front-jardindoscar:
     container_name: nextjs-front-jardindoscar
@@ -93,7 +95,8 @@ services:
     ports:
       - 3001:3000
     networks:
-      - jardindoscar-net
+      jardindoscar-net:
+        ipv4_address: 192.168.129.4
 
   mailserver-jardindoscar:
     image: docker.io/mailserver/docker-mailserver:latest
@@ -123,13 +126,14 @@ services:
       timeout: 3s
       retries: 0
     networks:
-      - jardindoscar-net
+      jardindoscar-net:
+        ipv4_address: 192.168.129.5
     extra_hosts:
-      - "mail.jardindoscar.fr:192.168.128.2"
+      - "mail.jardindoscar.fr:192.168.129.1"
 
 networks:
   jardindoscar-net:
     driver: bridge
     ipam:
       config:
-        - subnet: "192.168.128.0/24"
+        - subnet: "192.168.129.0/24"
