@@ -83,7 +83,7 @@ services:
       STORAGE_LOCAL_ROOT: "./backend/uploads"
     networks:
       jardindoscar-net:
-        ipv4_address: 192.168.128.1
+        ipv4_address: 192.168.128.2
 
   nextjs-front-jardindoscar:
     container_name: nextjs-front-jardindoscar
@@ -125,7 +125,7 @@ services:
     networks:
       - jardindoscar-net
     extra_hosts:
-      - "mail.jardindoscar.fr:192.168.128.1"
+      - "mail.jardindoscar.fr:192.168.128.2"
 
 networks:
   jardindoscar-net:
@@ -133,3 +133,4 @@ networks:
     ipam:
       config:
         - subnet: "192.168.128.0/24"
+        - gateway: "192.168.128.1"
