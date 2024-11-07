@@ -124,7 +124,7 @@ services:
     networks:
       - jardindoscar-net
     extra_hosts:
-      - "mail.jardindoscar.fr:172.18.0.5"
+      - "srv407022.fr:172.18.0.1"
 
 networks:
   jardindoscar-net:
