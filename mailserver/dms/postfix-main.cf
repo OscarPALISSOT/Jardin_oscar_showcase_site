@@ -28,8 +28,6 @@ inet_protocols = all
 # These [snakeoil files actually exist](https://askubuntu.com/questions/396120/what-is-the-purpose-of-the-ssl-cert-snakeoil-key), but shouldn't ever be used in production!
 # If no `SSL_TYPE` env is set, "plaintext" is configured, but still accepts SSL with these:
 smtpd_tls_chain_files = /etc/letsencrypt/live/jardindoscar.fr/privkey.pem /etc/letsencrypt/live/jardindoscar.fr/fullchain.pem
-smtpd_tls_cert_file=/etc/letsencrypt/live/jardindoscar.fr/fullchain.pem
-smtpd_tls_key_file=/etc/letsencrypt/live/jardindoscar.fr/privkey.pem
 #smtpd_tls_CAfile =
 #smtp_tls_CAfile =
 smtpd_tls_security_level = may
@@ -56,7 +54,8 @@ smtp_tls_CApath = /etc/ssl/certs
 smtpd_helo_required = yes
 smtpd_delay_reject = yes
 smtpd_helo_restrictions = permit_mynetworks, reject_invalid_helo_hostname, permit
-smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination, check_policy_service unix:private/policyd-spf, reject_invalid_helo_hostname, reject_non_fqdn_helo_hostname, reject_unknown_recipient_domain, check_policy_service inet:localhost:65265
+smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated
+#, reject_unauth_destination, check_policy_service unix:private/policyd-spf, reject_invalid_helo_hostname, reject_non_fqdn_helo_hostname, reject_unknown_recipient_domain, check_policy_service inet:localhost:65265
 smtpd_client_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
 smtpd_sender_restrictions = $dms_smtpd_sender_restrictions
 smtpd_discard_ehlo_keywords = silent-discard, dsn
