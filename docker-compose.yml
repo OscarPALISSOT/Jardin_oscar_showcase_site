@@ -110,7 +110,7 @@ services:
       - ./mailserver/dms/mail-state/:/var/mail-state/
       - ./mailserver/dms/mail-logs/:/var/log/mail/
       - ./mailserver/dms/config/:/tmp/docker-mailserver/
-      - ./mailserver/dms/config/postfix-main.cf:/etc/postfix/main.cf
+#      - ./mailserver/dms/config/postfix-main.cf:/etc/postfix/main.cf
       - /etc/letsencrypt:/etc/letsencrypt
       - /etc/localtime:/etc/localtime:ro
     restart: always
