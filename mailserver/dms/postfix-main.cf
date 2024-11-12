@@ -1,5 +1,6 @@
 # See /usr/share/postfix/main.cf.dist for a commented, more complete version
 
+smtp_destination_recipient_limit = 1024
 smtpd_banner = $myhostname ESMTP
 biff = no
 append_dot_mydomain = no
