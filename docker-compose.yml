@@ -54,8 +54,8 @@ services:
       EMAIL_SMTP_PORT: 465
       EMAIL_SMTP_POOL: "true"
       EMAIL_SMTP_SECURE: "true"
-      EMAIL_SMTP_USER: ${EMAIL_SMTP_USER}
-      EMAIL_SMTP_PASS: ${EMAIL_SMTP_PASS}
+      SMTP_USER: ${EMAIL_SMTP_USER}
+      SMTP_PASS: ${EMAIL_SMTP_PASS}
       EMAIL_SMTP_FROM: "no-reply@jardindoscar.fr"
 
       CACHE_STORE: "redis"
