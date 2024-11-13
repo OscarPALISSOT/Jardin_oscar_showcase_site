@@ -12,14 +12,10 @@ services:
         MYSQL_DATABASE: ${MYSQL_DATABASE}
         MYSQL_USER: ${MYSQL_USER}
         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    networks:
-      - jardindoscar-net
 
   cache-jardindoscar:
     container_name: cache-jardindoscar
     image: redis:latest
-    networks:
-      - jardindoscar-net
 
   directus-jardindoscar:
     container_name: directus-jardindoscar
@@ -54,13 +50,13 @@ services:
 
       # SMTP CONFIGURATION
       EMAIL_TRANSPORT: "smtp"
-      EMAIL_SMTP_HOST: mail.jardindoscar.fr
-      EMAIL_SMTP_PORT: 587
+      EMAIL_SMTP_HOST: "smtp-relay.brevo.com"
+      EMAIL_SMTP_PORT: 465
       EMAIL_SMTP_POOL: "true"
-      EMAIL_SMTP_SECURE: "false"
-      SMTP_USER: ${EMAIL_SMTP_USER}
-      SMTP_PASS: ${EMAIL_SMTP_PASS}
-      EMAIL_SMTP_FROM: "noreply@jardindoscar.fr"
+      EMAIL_SMTP_SECURE: "true"
+      EMAIL_SMTP_USER: ${EMAIL_SMTP_USER}
+      EMAIL_SMTP_PASS: ${EMAIL_SMTP_PASS}
+      EMAIL_SMTP_FROM: "no-reply@jardindoscar.fr"
 
       CACHE_STORE: "redis"
       RATE_LIMITER_STORE: "redis"
@@ -81,8 +77,6 @@ services:
       STORAGE_LOCATIONS: "local"
       STORAGE_LOCAL_DRIVER: "local"
       STORAGE_LOCAL_ROOT: "./backend/uploads"
-    networks:
-      - jardindoscar-net
 
   nextjs-front-jardindoscar:
     container_name: nextjs-front-jardindoscar
@@ -91,44 +85,3 @@ services:
     build: frontend
     ports:
       - 3001:3000
-    networks:
-      - jardindoscar-net
-
-  mailserver-jardindoscar:
-    image: docker.io/mailserver/docker-mailserver:latest
-    container_name: mailserver-jardindoscar
-    domainname: jardindoscar.fr
-    env_file: .env
-    ports:
-      - "25:25"    # SMTP  (explicit TLS => STARTTLS)
-      - "143:143"  # IMAP4 (explicit TLS => STARTTLS)
-      - "465:465"  # ESMTP (implicit TLS)
-      - "587:587"  # ESMTP (explicit TLS => STARTTLS)
-      - "993:993"  # IMAP4 (implicit TLS)
-    volumes:
-      - ./mailserver/dms/mail-data/:/var/mail/
-      - ./mailserver/dms/mail-state/:/var/mail-state/
-      - ./mailserver/dms/mail-logs/:/var/log/mail/
-      - ./mailserver/dms/config/:/tmp/docker-mailserver/
-      - ./mailserver/dms/config/postfix-main.cf:/etc/postfix/main.cf
-      - /etc/letsencrypt:/etc/letsencrypt
-      - /etc/localtime:/etc/localtime:ro
-    restart: always
-    stop_grace_period: 1m
-    cap_add:
-      - NET_ADMIN
-    healthcheck:
-      test: "ss --listening --tcp | grep -P 'LISTEN.+:smtp' || exit 1"
-      timeout: 3s
-      retries: 0
-    networks:
-      - jardindoscar-net
-    extra_hosts:
-      - "srv407022:172.18.0.1"
-
-networks:
-  jardindoscar-net:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: "172.18.0.0/24"
