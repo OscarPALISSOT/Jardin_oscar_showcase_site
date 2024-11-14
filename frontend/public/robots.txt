@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Disallow: /mentions-legales
+
+Sitemap: https://jardindoscar.fr/sitemap.xml
