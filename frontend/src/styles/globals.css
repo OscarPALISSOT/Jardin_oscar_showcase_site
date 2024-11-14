@@ -30,6 +30,10 @@ a{
   text-decoration: none;
 }
 
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
+
 @media (min-width: 640px) {
 
 }

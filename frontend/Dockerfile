@@ -4,8 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-ENV NEXT_PUBLIC_DIRECTUS_URL=https://backend.jardindoscar.fr
-ENV NEXT_PUBLIC_ASSETS_URL=${NEXT_PUBLIC_DIRECTUS_URL}/assets/
+COPY .env .env
 
 RUN npm install
 

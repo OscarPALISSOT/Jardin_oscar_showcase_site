@@ -3,6 +3,7 @@ import type {AppProps} from 'next/app'
 import '@/styles/globals.css'
 import '@/styles/variable.css'
 import Head from "next/head";
+import GoogleCaptchaWrapper from "@/components/googleCaptchaWrapper";
 
 
 export default function App({Component, pageProps}: AppProps) {
@@ -15,8 +16,9 @@ export default function App({Component, pageProps}: AppProps) {
                 <meta name="theme-color" content="#af6d16" media="(prefers-color-scheme: dark)"/>
             </Head>
 
-            <Component {...pageProps} />
-
+            <GoogleCaptchaWrapper>
+                <Component {...pageProps} />
+            </GoogleCaptchaWrapper>
         </>
     )
 }
