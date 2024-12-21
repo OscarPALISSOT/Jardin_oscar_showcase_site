@@ -5,11 +5,7 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'backend.jardindoscar.fr',
-            },
-            {
-                protocol: 'http',
-                hostname: 'localhost',
-            },
+            }
         ],
         dangerouslyAllowSVG: true,
     },
