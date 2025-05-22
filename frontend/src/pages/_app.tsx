@@ -12,6 +12,10 @@ export default function App({Component, pageProps}: AppProps) {
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <title>Le jardin d&apos;Oscar | Terrasses bois et artisan dans le Doubs</title>
+                <meta
+                    name="description"
+                    content="Découvrez Le jardin d'Oscar, artisan spécialisé dans la création de terrasses en bois dans le Doubs. Qualité, savoir-faire et passion du bois pour sublimer vos espaces extérieurs."
+                />
                 <meta name="theme-color" content="#dc891c" media="(prefers-color-scheme: light)"/>
                 <meta name="theme-color" content="#af6d16" media="(prefers-color-scheme: dark)"/>
             </Head>
