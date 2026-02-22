@@ -1,3 +1,0 @@
-jardindoscar.fr {
-  reverse_proxy oscarpalissot.fr:3001
-}

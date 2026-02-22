@@ -1,4 +1,3 @@
-version: "3"
 services:
   database-jardindoscar:
     container_name: database-jardindoscar
@@ -6,7 +5,7 @@ services:
     ports:
       - 65051:3306
     volumes:
-      - ./backend/database:/var/lib/mysql
+      - mariadb_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -21,15 +20,15 @@ services:
   networks:
     - shared-network
 
-  reverse-proxy-backoffice:
+  reverse-proxy:
     image: caddy:latest
-    container_name: reverse-proxy-backoffice
+    container_name: reverse-proxy
     restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ../backend/Caddyfile:/etc/caddy/Caddyfile
+      - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
       - caddy_config:/config
     networks:
@@ -38,16 +37,13 @@ services:
   directus-jardindoscar:
     container_name: directus-jardindoscar
     image: directus/directus:latest
-    ports:
-      - 8056:8055
     volumes:
-      - ./backend/directus/uploads:/directus/backend/uploads
+      - ./backend/directus/uploads:/directus/uploads
       - ./backend/directus/database:/directus/database
       - ./backend/directus/extensions:/directus/extensions
     depends_on:
       - cache-jardindoscar
       - database-jardindoscar
-      - reverse-proxy-backoffice
     restart: unless-stopped
     environment:
       KEY: ${KEY}
@@ -93,22 +89,8 @@ services:
       #STORAGE
       STORAGE_LOCATIONS: "local"
       STORAGE_LOCAL_DRIVER: "local"
-      STORAGE_LOCAL_ROOT: "./backend/uploads"
+      STORAGE_LOCAL_ROOT: "/directus/uploads"
 
-    networks:
-      - shared-network
-
-  reverse-proxy-front:
-    image: caddy:latest
-    container_name: reverse-proxy-front
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ../frontend/Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
     networks:
       - shared-network
 
@@ -116,7 +98,7 @@ services:
     container_name: nextjs-front-jardindoscar
     depends_on:
       - directus-jardindoscar
-      - reverse-proxy-front
+      - reverse-proxy
     build:
       context: frontend
       args:
@@ -124,8 +106,6 @@ services:
         - NEXT_PUBLIC_ASSETS_URL=${NEXT_PUBLIC_ASSETS_URL}
         - NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY=${NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY}
         - RECAPTCHA_SECRET_KEY=${RECAPTCHA_SECRET_KEY}
-    ports:
-      - 3001:3000
     env_file:
       - .env
     networks:
