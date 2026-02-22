@@ -8,14 +8,32 @@ services:
     volumes:
       - ./backend/database:/var/lib/mysql
     environment:
-        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-        MYSQL_DATABASE: ${MYSQL_DATABASE}
-        MYSQL_USER: ${MYSQL_USER}
-        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - shared-network
 
   cache-jardindoscar:
     container_name: cache-jardindoscar
     image: redis:latest
+  networks:
+    - shared-network
+
+  reverse-proxy-backoffice:
+    image: caddy:latest
+    container_name: reverse-proxy-backoffice
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - shared-network
 
   directus-jardindoscar:
     container_name: directus-jardindoscar
@@ -29,6 +47,7 @@ services:
     depends_on:
       - cache-jardindoscar
       - database-jardindoscar
+      - reverse-proxy-backoffice
     restart: unless-stopped
     environment:
       KEY: ${KEY}
@@ -76,10 +95,28 @@ services:
       STORAGE_LOCAL_DRIVER: "local"
       STORAGE_LOCAL_ROOT: "./backend/uploads"
 
+    networks:
+      - shared-network
+
+  reverse-proxy-front:
+    image: caddy:latest
+    container_name: reverse-proxy-front
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - shared-network
+
   nextjs-front-jardindoscar:
     container_name: nextjs-front-jardindoscar
     depends_on:
       - directus-jardindoscar
+      - reverse-proxy-front
     build:
       context: frontend
       args:
@@ -91,4 +128,10 @@ services:
       - 3001:3000
     env_file:
       - .env
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+
 
