@@ -17,8 +17,8 @@ services:
   cache-jardindoscar:
     container_name: cache-jardindoscar
     image: redis:latest
-  networks:
-    - shared-network
+    networks:
+      - shared-network
 
   reverse-proxy:
     image: caddy:latest
