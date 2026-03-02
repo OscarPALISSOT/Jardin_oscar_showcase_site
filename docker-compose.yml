@@ -2,8 +2,6 @@ services:
   database-jardindoscar:
     container_name: database-jardindoscar
     image: mariadb:latest
-    ports:
-      - 65051:3306
     volumes:
       - mariadb_data:/var/lib/mysql
     environment:
@@ -20,19 +18,19 @@ services:
     networks:
       - shared-network
 
-  reverse-proxy:
+  reverse-proxy-jardindoscar:
     image: caddy:latest
-    container_name: reverse-proxy
+    container_name: reverse-proxy-jardindoscar
     restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
+    expose:
+      - "80"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
       - caddy_config:/config
     networks:
       - shared-network
+      - edge-network
 
   directus-jardindoscar:
     container_name: directus-jardindoscar
@@ -98,7 +96,7 @@ services:
     container_name: nextjs-front-jardindoscar
     depends_on:
       - directus-jardindoscar
-      - reverse-proxy
+      - reverse-proxy-jardindoscar
     build:
       context: frontend
       args:
@@ -113,10 +111,10 @@ services:
 
 networks:
   shared-network:
+  edge-network:
+    external: true
 
 volumes:
   mariadb_data:
   caddy_data:
   caddy_config:
-
-
