@@ -1,4 +1,4 @@
-backend.jardindoscar.fr www.backend.jardindoscar.fr{
+backend.jardindoscar.fr www.backend.jardindoscar.fr {
   reverse_proxy oscarpalissot.fr:8055
 }
 
