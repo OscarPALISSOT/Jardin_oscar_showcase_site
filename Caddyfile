@@ -1,7 +1,7 @@
 backend.jardindoscar.fr www.backend.jardindoscar.fr {
-  reverse_proxy oscarpalissot.fr:8055
+  reverse_proxy directus-jardindoscar:8055
 }
 
 jardindoscar.fr www.jardindoscar.fr {
-  reverse_proxy oscarpalissot.fr:3000
+  reverse_proxy nextjs-front-jardindoscar:3000
 }
