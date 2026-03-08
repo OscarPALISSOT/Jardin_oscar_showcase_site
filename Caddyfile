@@ -1,7 +1,7 @@
-backend.jardindoscar.fr www.backend.jardindoscar.fr {
+http://backend.jardindoscar.fr, http://www.backend.jardindoscar.fr {
   reverse_proxy directus-jardindoscar:8055
 }
 
-jardindoscar.fr www.jardindoscar.fr {
+http://jardindoscar.fr, http://www.jardindoscar.fr {
   reverse_proxy nextjs-front-jardindoscar:3000
 }
