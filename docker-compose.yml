@@ -100,7 +100,7 @@ services:
     build:
       context: frontend
       args:
-        - NEXT_PUBLIC_DIRECTUS_URL=${NEXT_PUBLIC_DIRECTUS_URL}
+        - NEXT_DIRECTUS_INTERNAL_URL=${NEXT_DIRECTUS_INTERNAL_URL}
         - NEXT_PUBLIC_ASSETS_URL=${NEXT_PUBLIC_ASSETS_URL}
         - NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY=${NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY}
         - RECAPTCHA_SECRET_KEY=${RECAPTCHA_SECRET_KEY}
@@ -111,6 +111,7 @@ services:
 
 networks:
   shared-network:
+    internal: true
   edge-network:
     external: true
 

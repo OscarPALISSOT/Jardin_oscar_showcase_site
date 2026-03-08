@@ -4,7 +4,7 @@ import Footer from "@/components/footer";
 import React from "react";
 import {createDirectus, readSingleton, rest} from "@directus/sdk";
 
-const client = createDirectus(process.env.NEXT_PUBLIC_DIRECTUS_URL!).with(rest());
+const client = createDirectus(process.env.NEXT_DIRECTUS_INTERNAL_URL!).with(rest());
 
 interface MentionsLegalesProps {
     links: string[];

@@ -10,7 +10,7 @@ import Gallery from "@/components/gallery/gallery";
 import ContactBlock from "@/components/contact/contactBlock";
 import Footer from "@/components/footer";
 
-const client = createDirectus(process.env.NEXT_PUBLIC_DIRECTUS_URL!).with(rest());
+const client = createDirectus(process.env.NEXT_DIRECTUS_INTERNAL_URL!).with(rest());
 
 interface HomeProps {
     links: string[];

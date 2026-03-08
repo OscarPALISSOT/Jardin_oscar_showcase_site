@@ -5,7 +5,7 @@ import axios from "axios";
 import { useState, ChangeEvent, FormEvent } from 'react';
 import Button from "@/components/button";
 import {createDirectus, createItem, rest} from "@directus/sdk";
-const client = createDirectus(process.env.NEXT_PUBLIC_DIRECTUS_URL!).with(rest());
+const client = createDirectus(process.env.NEXT_DIRECTUS_INTERNAL_URL!).with(rest());
 
 interface FormData {
     email: string;
