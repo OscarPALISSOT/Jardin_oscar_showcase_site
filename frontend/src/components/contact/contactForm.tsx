@@ -1,11 +1,9 @@
 'use client';
 
-import {useGoogleReCaptcha} from "react-google-recaptcha-v3";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import axios from "axios";
 import { useState, ChangeEvent, FormEvent } from 'react';
 import Button from "@/components/button";
-import {createDirectus, createItem, rest} from "@directus/sdk";
-const client = createDirectus(process.env.NEXT_DIRECTUS_INTERNAL_URL!).with(rest());
 
 interface FormData {
     email: string;
@@ -13,7 +11,7 @@ interface FormData {
 }
 
 const ContactForm = () => {
-    const [formData, setFormData] = useState<FormData>({email: '', message: '' });
+    const [formData, setFormData] = useState<FormData>({ email: '', message: '' });
     const [submitted, setSubmitted] = useState<boolean>(false);
 
     const { executeRecaptcha } = useGoogleReCaptcha();
@@ -25,7 +23,7 @@ const ContactForm = () => {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (!executeRecaptcha){
+        if (!executeRecaptcha) {
             console.error('Not able to execute recaptcha');
             return;
         }
@@ -49,10 +47,10 @@ const ContactForm = () => {
             return;
         }
         try {
-            const response = await client.request(createItem('contact_messages', {
+            const response = await axios.post('/api/contact', {
                 email: formData.email,
                 message: formData.message,
-            }));
+            });
             if (response) {
                 setSubmitted(true);
                 setFormData({ email: '', message: '' });
@@ -86,10 +84,10 @@ const ContactForm = () => {
                         fill="currentColor"
                         className="size-6 mr-2"
                     >
-                      <path
-                          d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z"/>
-                      <path
-                          d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z"/>
+                        <path
+                            d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
+                        <path
+                            d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
                     </svg>
 
                     Email :
