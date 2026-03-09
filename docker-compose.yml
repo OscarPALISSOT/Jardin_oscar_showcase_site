@@ -91,6 +91,7 @@ services:
 
     networks:
       - shared-network
+      - outbound-network
 
   nextjs-front-jardindoscar:
     container_name: nextjs-front-jardindoscar
@@ -114,6 +115,8 @@ networks:
     internal: true
   edge-network:
     external: true
+  outbound-network:
+    driver: bridge
 
 volumes:
   mariadb_data:
