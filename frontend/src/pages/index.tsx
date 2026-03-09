@@ -1,5 +1,5 @@
 import React from "react";
-import {createDirectus, readSingleton, rest} from "@directus/sdk";
+import { createDirectus, readSingleton, rest } from "@directus/sdk";
 import Navbar from "@/components/navbar/navbar";
 import NavbarMobile from "@/components/navbar/navbarMobile";
 import Hero from "@/components/heroBlock/hero";
@@ -10,8 +10,6 @@ import Gallery from "@/components/gallery/gallery";
 import ContactBlock from "@/components/contact/contactBlock";
 import Footer from "@/components/footer";
 
-const client = createDirectus(process.env.NEXT_DIRECTUS_INTERNAL_URL!).with(rest());
-
 interface HomeProps {
     links: string[];
     logo: string;
@@ -21,7 +19,7 @@ interface HomeProps {
     galleryBlock: GalleryType;
     contactBlock: ContactType;
 }
-const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlock, contactBlock}: HomeProps) => {
+const Home = ({ logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlock, contactBlock }: HomeProps) => {
 
     return (
         <>
@@ -46,28 +44,28 @@ const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlo
 
                 {serviceBlock &&
                     <Section id={serviceBlock.link}>
-                        <ServiceBlock serviceBlock={serviceBlock}/>
+                        <ServiceBlock serviceBlock={serviceBlock} />
                     </Section>
                 }
 
                 {renovationBlock &&
                     <Section id={renovationBlock.link}>
-                        <Renovation renovationBlock={renovationBlock}/>
+                        <Renovation renovationBlock={renovationBlock} />
                     </Section>
                 }
 
                 {galleryBlock &&
                     <Section id={galleryBlock.link}>
-                        <Gallery galleryBlock={galleryBlock}/>
+                        <Gallery galleryBlock={galleryBlock} />
                     </Section>
                 }
 
                 {contactBlock &&
                     <Section id={contactBlock.link}>
-                        <ContactBlock contactBlock={contactBlock}/>
+                        <ContactBlock contactBlock={contactBlock} />
                     </Section>
                 }
-                <Footer links={links}/>
+                <Footer links={links} />
             </div>
         </>
     )
@@ -76,51 +74,58 @@ const Home = ({logo, links, heroBlock, serviceBlock, renovationBlock, galleryBlo
 
 export async function getServerSideProps() {
 
-    const hero = await client.request(
-        readSingleton('hero', {
-            fields: ['*', {}],
-        })
-    ) as unknown as HeroType;
+    try {
+        const client = createDirectus(process.env.NEXT_DIRECTUS_INTERNAL_URL!).with(rest());
 
-    const service_block = await client.request(
-        readSingleton('service_block', {
-            fields: ['*', {
-                services: ['*', {}]
-            }],
-        })
-    ) as unknown as Service_blockType;
+        const hero = await client.request(
+            readSingleton('hero', {
+                fields: ['*', {}],
+            })
+        ) as unknown as HeroType;
 
-    const renovation = await client.request(
-        readSingleton('renovation', {
-            fields: ['*', {}],
-        })
-    ) as unknown as RenovationType;
+        const service_block = await client.request(
+            readSingleton('service_block', {
+                fields: ['*', {
+                    services: ['*', {}]
+                }],
+            })
+        ) as unknown as Service_blockType;
 
-    const gallery = await client.request(
-        readSingleton('gallery', {
-            fields: ['*', {
-                images: ['*', {}]
-            }],
-        })
-    ) as unknown as GalleryType;
+        const renovation = await client.request(
+            readSingleton('renovation', {
+                fields: ['*', {}],
+            })
+        ) as unknown as RenovationType;
 
-    const contact = await client.request(
-        readSingleton('contact', {
-            fields: ['*', {}],
-        })
-    ) as unknown as ContactType;
+        const gallery = await client.request(
+            readSingleton('gallery', {
+                fields: ['*', {
+                    images: ['*', {}]
+                }],
+            })
+        ) as unknown as GalleryType;
 
-    return {
-        props: {
-            heroBlock: hero,
-            serviceBlock: service_block,
-            renovationBlock: renovation,
-            galleryBlock: gallery,
-            contactBlock: contact,
-            links: [hero.link, service_block.link, renovation.link, gallery.link, contact.link],
-            logo: hero.logo,
-        },
-    };
+        const contact = await client.request(
+            readSingleton('contact', {
+                fields: ['*', {}],
+            })
+        ) as unknown as ContactType;
+
+        return {
+            props: {
+                heroBlock: hero,
+                serviceBlock: service_block,
+                renovationBlock: renovation,
+                galleryBlock: gallery,
+                contactBlock: contact,
+                links: [hero.link, service_block.link, renovation.link, gallery.link, contact.link],
+                logo: hero.logo,
+            },
+        };
+    } catch (error) {
+        return { props: { error: true } };
+    }
+
 }
 
 export default Home
