@@ -47,7 +47,7 @@ const ImageModal = ({imageSrc, isOpen, setIsOpen}: ImageModalProps) => {
                 </svg>
             </span>
             <Image
-                src={process.env.NEXT_DIRECTUS_INTERNAL_URL + /assets/ + imageSrc + '?key=squared-thumb'}
+                src={process.env.NEXT_PUBLIC_ASSETS_URL + imageSrc + '?key=squared-thumb'} unoptimized
                 width={1080} height={1080} alt={'photo réalisation'}
                 className={`fixed z-50 w-1/2 h-auto max-h-[80%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-xl transition-all duration-300 ease-in-out ${
                     isImageVisible ? 'opacity-100' : 'opacity-0 translate-y-[-40%]'

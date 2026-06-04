@@ -23,7 +23,7 @@ const Renovation = ({renovationBlock}: RenovationProps) => {
                         <div className={'flex flex-col gap-2 sm:w-1/2'}>
                             <Image
                                 className={'h-10 mb-4 w-fit hover:scale-105 duration-300 ease-out transition-all'}
-                                src={process.env.NEXT_DIRECTUS_INTERNAL_URL + /assets/ + renovationBlock.icon_1 + '?key=logo'}
+                                src={process.env.NEXT_PUBLIC_ASSETS_URL  + renovationBlock.icon_1 + '?key=logo'} unoptimized
                                 alt={renovationBlock.keyword_1} width={128}
                                 height={128}/>
                             <p className={'font-serif font-extrabold text-lg lg:text-xl text-fontColor underline decoration-primary underline-offset-2 decoration-2'}>{renovationBlock.keyword_1}</p>
@@ -32,7 +32,7 @@ const Renovation = ({renovationBlock}: RenovationProps) => {
                         <div className={'flex flex-col gap-2 sm:w-1/2'}>
                             <Image
                                 className={'h-10 mb-4 w-fit hover:scale-105 duration-300 ease-out transition-all'}
-                                src={process.env.NEXT_DIRECTUS_INTERNAL_URL + /assets/ + renovationBlock.icon_2 + '?key=logo'}
+                                src={process.env.NEXT_PUBLIC_ASSETS_URL  + renovationBlock.icon_2 + '?key=logo'} unoptimized
                                 alt={renovationBlock.keyword_2} width={128}
                                 height={128}/>
                             <p className={'font-serif font-extrabold text-lg lg:text-xl text-fontColor underline decoration-primary underline-offset-2 decoration-2'}>{renovationBlock.keyword_2}</p>
