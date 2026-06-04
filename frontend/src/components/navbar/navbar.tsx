@@ -24,7 +24,7 @@ const Navbar = ({links, logo}: NavbarProps) => {
                     <Link href="/">
                         <Image
                             className={'h-12 w-auto cursor-pointer hover:scale-105 duration-300 ease-out transition-all'}
-                            src={process.env.NEXT_DIRECTUS_INTERNAL_URL + logo + '?key=logo'} alt="logo" width={128}
+                            src={process.env.NEXT_DIRECTUS_INTERNAL_URL + /assets/ + logo + '?key=logo'} alt="logo" width={128}
                             height={128}/>
                     </Link>
                     <div>

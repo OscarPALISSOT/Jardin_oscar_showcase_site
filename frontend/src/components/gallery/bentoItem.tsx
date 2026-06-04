@@ -16,7 +16,7 @@ const BentoItem = ({imageSrc}: BentoItemProps) => {
                 className={'group relative flex flex-col overflow-hidden rounded-xl px-4 pb-4 pt-40 flex-grow cursor-pointer shadow-md transition-all duration-500 ease-in-out'}
             >
                 <Image
-                    src={process.env.NEXT_DIRECTUS_INTERNAL_URL + imageSrc + '?key=squared-thumb'}
+                    src={process.env.NEXT_DIRECTUS_INTERNAL_URL + /assets/ + imageSrc + '?key=squared-thumb'}
                     width={1080} height={1080} alt={'photo réalisation'}
                     className={'absolute left-0 top-0 inset-0 h-full w-full object-cover group-hover:scale-105 transition-all duration-500 ease-in-out'}
                     onClick={() => setIsFocused(true)}
