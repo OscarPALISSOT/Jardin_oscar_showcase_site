@@ -20,7 +20,7 @@ const ServiceBlock = ({serviceBlock}: ServiceBlockProps) => {
 
             <div
                 className={'my-12 md:-mx-24 2xl:-mx-64 -mx-8 h-fit md:h-60 flex flex-col justify-center bg-center bg-no-repeat bg-cover'}
-                style={{ backgroundImage: `url(${process.env.NEXT_DIRECTUS_INTERNAL_URL + serviceBlock.banner + '?key=1080p'})` }}
+                style={{ backgroundImage: `url(${process.env.NEXT_PUBLIC_ASSETS_URL + serviceBlock.banner + '?key=1080p'})` }}
             >
 
                 <div className={'md:mx-24 mx-8 my-20 [text-shadow:_0_1px_0_rgb(0_0_0_/_80%)]'}>
