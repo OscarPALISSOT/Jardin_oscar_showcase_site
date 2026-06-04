@@ -1,0 +1,14 @@
+services:
+  directus-jardindoscar:
+    ports:
+      - "8055:8055"
+
+  nextjs-front-jardindoscar:
+    ports:
+      - "3000:3000"
+    profiles:
+      - prod  # désactive le frontend en dev
+
+  reverse-proxy-jardindoscar:
+    profiles:
+      - prod  # désactive Caddy en dev 

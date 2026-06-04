@@ -34,4 +34,4 @@ jobs:
           script: |
             cd /home/containers/Jardin_oscar_showcase_site
             docker compose down --rmi all
-            docker compose up -d
+            docker compose -f docker-compose.yml up -d
