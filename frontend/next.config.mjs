@@ -9,6 +9,10 @@ const nextConfig = {
             {
                 protocol: 'http',
                 hostname: 'localhost',
+            },
+            {
+                protocol: 'http',
+                hostname: 'directus-jardindoscar',
             }
         ],
         dangerouslyAllowSVG: true,
