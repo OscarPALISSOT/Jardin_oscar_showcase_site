@@ -10,6 +10,11 @@
   },
   "dependencies": {
     "@directus/sdk": "^15.0.1",
+    "@fortawesome/fontawesome-svg-core": "^7.2.0",
+    "@fortawesome/free-brands-svg-icons": "^7.2.0",
+    "@fortawesome/free-regular-svg-icons": "^7.2.0",
+    "@fortawesome/free-solid-svg-icons": "^7.2.0",
+    "@fortawesome/react-fontawesome": "^3.3.1",
     "axios": "^1.7.7",
     "next": "^14.0.0",
     "react": "^18",

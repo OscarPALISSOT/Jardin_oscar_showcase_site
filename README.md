@@ -15,3 +15,4 @@ J'ai réalisé ce projet en utilisant les technologies suivantes :
 - **React** : pour l'infrastructure frontend.
 - **NextJS** : pour le rendu côté serveur.
 - **Tailwind** : pour le style du site web.
+- **Google Stitch** : J'ai utilisé ce projet pour decouvrir les fonctionalités de design de Google Stitch.

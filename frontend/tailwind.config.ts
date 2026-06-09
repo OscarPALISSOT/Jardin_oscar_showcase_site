@@ -1,4 +1,5 @@
-import type {Config} from "tailwindcss";
+import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
     content: [
@@ -42,6 +43,15 @@ const config: Config = {
             },
         }
     },
-    plugins: [require('@tailwindcss/typography')],
+    plugins: [
+        require('@tailwindcss/typography'),
+        plugin(({ addUtilities }) => {
+            addUtilities({
+                '.text-shadow-light': {
+                    textShadow: '0 1px 0 rgb(0 0 0 / 80%)',
+                },
+            })
+        }),
+    ],
 };
 export default config;

@@ -23,7 +23,7 @@ const ServiceBlock = ({serviceBlock}: ServiceBlockProps) => {
                 style={{ backgroundImage: `url(${process.env.NEXT_PUBLIC_ASSETS_URL + serviceBlock.banner + '?key=1080p'})` }}
             >
 
-                <div className={'md:mx-24 mx-8 my-20 [text-shadow:_0_1px_0_rgb(0_0_0_/_80%)]'}>
+                <div className={'md:mx-24 mx-8 my-20 text-shadow-light'}>
                     <h1 className={'text-2xl lg:text-3xl font-serif font-extrabold text-fontColorLight mb-2'}>{serviceBlock.banner_title}</h1>
                     <p className={'text-lg lg:text-xl text-fontColorLight'}>{serviceBlock.banner_text}</p>
                 </div>

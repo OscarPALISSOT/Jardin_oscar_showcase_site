@@ -21,11 +21,12 @@ const Navbar = ({links, logo}: NavbarProps) => {
             <div
                 className={`hidden lg:flex text-2xl transition duration-300 font-bold bg-background font-serif sticky top-0 2xl:px-64 2xl:-mx-64 -mx-24 px-24 flex-col justify-between z-50 ${scrollY > 2 && 'shadow-[0_6px_12px_0_rgba(0,0,0,0.12)] '}`}>
                 <div className={'flex flex-row justify-between items-center h-20'}>
-                    <Link href="/">
+                    <Link href="/" className={'flex flex-row items-center gap-4'}>
                         <Image
                             className={'h-12 w-auto cursor-pointer hover:scale-105 duration-300 ease-out transition-all'}
                             src={process.env.NEXT_PUBLIC_ASSETS_URL  + logo + '?key=logo'} alt="logo" width={128} unoptimized
                             height={128}/>
+                        <p className={'hidden xl:block text-3xl font-bold font-serif'}>Le jardin d'Oscar</p>
                     </Link>
                     <div>
                         <ul className={'flex flex-row'}>
