@@ -26,7 +26,7 @@ const Navbar = ({links, logo}: NavbarProps) => {
                             className={'h-12 w-auto cursor-pointer hover:scale-105 duration-300 ease-out transition-all'}
                             src={process.env.NEXT_PUBLIC_ASSETS_URL  + logo + '?key=logo'} alt="logo" width={128} unoptimized
                             height={128}/>
-                        <p className={'hidden xl:block text-3xl font-bold font-serif'}>Le jardin d'Oscar</p>
+                        <p className={'hidden xl:block text-3xl font-bold font-serif'}>Le jardin d&apos;Oscar</p>
                     </Link>
                     <div>
                         <ul className={'flex flex-row'}>
