@@ -48,7 +48,7 @@ const Hero = ({ heroBlock, nextSection, contactLink }: SectionProps) => {
                             icon={faCaretRight}
                         />
                     </div>
-                    <div className={'mt-6 gap-6'}>
+                    <div className={'mt-6 gap-6 sm:hidden'}>
                         <Button
                             text={'Demander un devis'}
                             style={'primary'}
