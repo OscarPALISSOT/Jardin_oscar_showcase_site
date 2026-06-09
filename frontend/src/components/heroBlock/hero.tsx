@@ -16,7 +16,7 @@ const Hero = ({ heroBlock, nextSection, contactLink }: SectionProps) => {
 
     return (
         <div className={'relative flex-grow flex-col justify-between'}>
-            <div className={'w-full flex flex-col justify-end sm:flex-row sm:items-center'}>
+            <div className={'w-full flex flex-col justify-end sm:flex-row sm:items-center sm:justify-start'}>
                 <div className={'relative w-dvw h-[calc(100dvh-5rem)] -mx-8 md:-mx-24 2xl:-mx-64'}>
                     <Image src={process.env.NEXT_PUBLIC_ASSETS_URL + heroBlock.hero_image + '?key=1080p'} unoptimized
                         width={1080} height={1080} alt={heroBlock.hero_image}
